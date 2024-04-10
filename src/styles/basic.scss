@@ -9,3 +9,25 @@ html,body{
   //高度和宽度100%
   height: 100%;
 }
+
+.flex{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.flex-column{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.flex-wrap{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.left,.right{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  flex-direction: row;
+}

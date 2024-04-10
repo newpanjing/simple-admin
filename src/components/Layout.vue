@@ -5,38 +5,41 @@ import LayoutHeader from "@/components/LayoutHeader.vue";
 </script>
 <template>
   <div class="layout">
-    <slot name="sidebar">
+  <el-container>
+    <el-aside class="aside">
       <Sidebar class="sidebar"/>
-    </slot>
-    <section class="content">
-      <slot name="header">
+    </el-aside>
+    <el-container>
+      <el-header class="header">
         <LayoutHeader/>
-      </slot>
-      <main>
+      </el-header>
+      <el-main class="main">
         <slot></slot>
-      </main>
-    </section>
+      </el-main>
+    </el-container>
+  </el-container>
   </div>
 </template>
 <style lang="scss">
 .layout{
   height: 100%;
   display: flex;
+  .aside{
+    display: flex;
+    width: auto;
+  }
   flex-direction: row;
-  .content{
+
+  .header{
+    padding: 0;
+    height: 54px;
+  }
+
+  .main{
     display: flex;
     flex-direction: column;
-    flex: 1 1 0%;
-    .header{
-      flex: 0 0 54px;
-    }
-    main{
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 0%;
-      overflow: auto;
-      background-color: var(--component-bg);
-    }
+    overflow: auto;
+    background-color: var(--component-bg);
   }
 }
 </style>

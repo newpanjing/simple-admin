@@ -44,6 +44,26 @@ const collapse = useStorage("collapse", true)
         @open="handleOpen"
         @close="handleClose"
     >
+      <el-sub-menu>
+        <template #title>
+          <el-icon>
+            <document/>
+          </el-icon>
+          <span>Dashboard</span>
+        </template>
+        <el-menu-item index="01" @click="clickHandler('/scene/1')">
+          <el-icon>
+            <document/>
+          </el-icon>
+          <span>大屏1</span>
+        </el-menu-item>
+        <el-menu-item index="02" @click="clickHandler('/scene/2')">
+          <el-icon>
+            <document/>
+          </el-icon>
+          <span>大屏2</span>
+        </el-menu-item>
+      </el-sub-menu>
       <el-sub-menu
           index="1">
         <template #title>
@@ -135,7 +155,7 @@ const collapse = useStorage("collapse", true)
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-
+      color: var(--sidebar-text-active-color);
     }
   }
 }
@@ -158,8 +178,8 @@ const collapse = useStorage("collapse", true)
   }
   .el-menu-item {
     //margin: 0;
-    width: 48px;
-    padding: 5px;
+    //width: 48px;
+    //padding: 5px;
     justify-content: center;
   }
 

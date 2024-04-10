@@ -5,19 +5,20 @@ import {ArrowDown, ArrowUp} from "@element-plus/icons-vue";
 const collapse=ref(true);
 
 const fields = ref([{
+  label:'全局搜索',
+  prop: 'q',
+  value: '',
+},{
   label: '规则编号',
   prop: 'id',
-  width: '100px',
   value:'看电视剧付款了电视剧'
 }, {
   label: '规则描述',
   prop: 'desc',
   value:'',
-  width: '200px'
 }, {
   label: '操作',
   prop: 'action',
-  width: '200px',
   value:'',
 },{
   label:'更新日期',

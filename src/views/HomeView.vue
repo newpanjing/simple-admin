@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import TheWelcome from '@/components/TheWelcome.vue'
 import { useStorage } from '@vueuse/core';
 
 const welcome= useStorage('welcome', true)
@@ -24,6 +23,7 @@ function showDialog() {
   ElMessage.warning({
     message: 'Welcome to Your Vue.js App',
   })
+  console.log('welcome', welcome.value)
 }
 
 </script>

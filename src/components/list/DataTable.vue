@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 400px">
+  <div style="height: 500px">
     <el-auto-resizer>
       <template #default="{ height, width }">
         <el-table-v2

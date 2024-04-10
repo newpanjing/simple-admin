@@ -17,7 +17,7 @@ const toggleCollapse=()=>{
 <template>
   <header class="header">
       <el-button text @click="toggleCollapse">
-        <el-icon :size="25">
+        <el-icon :size="20">
           <Expand v-if="collapse"/>
           <Fold v-else/>
         </el-icon>
@@ -25,7 +25,7 @@ const toggleCollapse=()=>{
       <div class="left">
         <!--       刷新按钮-->
         <el-button text @click="" circle>
-          <el-icon :size="25">
+          <el-icon :size="20">
             <Refresh/>
           </el-icon>
         </el-button>

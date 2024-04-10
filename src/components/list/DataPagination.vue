@@ -4,7 +4,7 @@
 
 <template>
 <div class="p">
-  <el-pagination background layout="prev, pager, next" :total="1000" />
+  <el-pagination background layout="total,sizes,jumper,prev, pager, next" :total="1000" />
 </div>
 </template>
 

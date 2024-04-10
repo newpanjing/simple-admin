@@ -6,8 +6,11 @@ import { createPinia } from 'pinia'
 //全量引入element-plus
 
 import ElementPlus from 'element-plus'
+
+import "@/styles/basic.scss"
 import 'element-plus/theme-chalk/dark/css-vars.css'
-import "~/styles/var.scss"
+import "@/styles/element.scss"
+import "@/styles/var.scss"
 
 import App from './App.vue'
 import router from './router'

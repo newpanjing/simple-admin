@@ -5,8 +5,6 @@ import {
   Location,
   Setting,
 } from '@element-plus/icons-vue'
-import {useRouter} from "vue-router";
-import {useStorage} from "@vueuse/core";
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
@@ -22,6 +20,8 @@ const clickHandler = (path: String) => {
     path: path
   })
 }
+
+const menus=ref([])
 
 //折叠展开
 const collapse = useStorage("collapse", true)

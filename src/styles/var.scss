@@ -1,3 +1,19 @@
 :root{
-  --el-color-primary: #44bd87!important;
+  --el-color-primary: #166cff!important;
+
+  --primary-color: #166cff;
+
+  //菜单栏
+  --sidebar-bg-color:#001525;
+  --sidebar-text-color:rgba(255, 255, 255, 0.65);
+  --sidebar-text-active-color:#fff;
+
+  --component-bg:#f5f5f5;
+
+  --panel-bg:#fff;
+}
+:root.dark{
+
+  --component-bg:#292a2a;
+  --panel-bg:#242525;
 }

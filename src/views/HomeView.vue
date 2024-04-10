@@ -11,6 +11,7 @@ onMounted(()=>{
 import { ElMessage } from 'element-plus'
 
 function showDialog() {
+  
   //显示elementui的弹窗
   ElMessage.success({
     message: 'Welcome to Your Vue.js App',
@@ -28,13 +29,12 @@ function showDialog() {
 </script>
 
 <template>
-  <main>111
+  <div style="height: 2000px">111
     {{ welcome }}
     <div>
       <el-link type="primary" @click="showDialog"> click me</el-link>
 
       <el-button>Default</el-button>
     </div>
-    <TheWelcome />
-  </main>
+  </div>
 </template>

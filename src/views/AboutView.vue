@@ -1,4 +1,4 @@
-<script setup type="ts">
+<script setup lang="ts">
 import { useStorage,useDark } from '@vueuse/core';
 const welcome = useStorage('welcome', 'Welcome to Simple UI!');
 
@@ -15,7 +15,7 @@ const isDark=useDark()
     <el-button>Default</el-button>
     {{ isDark }}
     <!-- 切换主题 -->
-    <el-button @click="isDark=!isDark">Toggle{{ isDark }}</el-button>
+    <el-button type="primary" @click="isDark=!isDark">Toggle{{ isDark }}</el-button>
 
     <el-card style="max-width: 480px">
       <template #header>

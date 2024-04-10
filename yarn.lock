@@ -626,6 +626,39 @@
   resolved "https://registry.npmmirror.com/@types/web-bluetooth/-/web-bluetooth-0.0.20.tgz#f066abfcd1cbe66267cdbbf0de010d8a41b41597"
   integrity sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==
 
+"@unhead/dom@1.9.4":
+  version "1.9.4"
+  resolved "https://registry.npmmirror.com/@unhead/dom/-/dom-1.9.4.tgz#37cd543e991bb033a8e29ce22864fb233708f7a4"
+  integrity sha512-nEaHOcCL0u56g4XOV5XGwRMFZ05eEINfp8nxVrPiIGLrS9BoFrZS7/6IYSkalkNRTmw8M5xqxt6BalBr594SaA==
+  dependencies:
+    "@unhead/schema" "1.9.4"
+    "@unhead/shared" "1.9.4"
+
+"@unhead/schema@1.9.4":
+  version "1.9.4"
+  resolved "https://registry.npmmirror.com/@unhead/schema/-/schema-1.9.4.tgz#4518139c82b5590e43c4f0b71072198f3a93a66e"
+  integrity sha512-/J6KYQ+aqKO5uLDTU9BXfiRAfJ3mQNmF5gh3Iyd4qZaWfqjsDGYIaAe4xAGPnJxwBn6FHlnvQvZBSGqru1MByw==
+  dependencies:
+    hookable "^5.5.3"
+    zhead "^2.2.4"
+
+"@unhead/shared@1.9.4":
+  version "1.9.4"
+  resolved "https://registry.npmmirror.com/@unhead/shared/-/shared-1.9.4.tgz#1f9b2e4103a49e6e39a51b5f4e94f5a337132aa9"
+  integrity sha512-ErP6SUzPPRX9Df4fqGlwlLInoG+iBiH0nDudRuIpoFGyTnv1uO9BQ+lfFld8s1gI1WCdoBwVkISBp9/f/E/GLA==
+  dependencies:
+    "@unhead/schema" "1.9.4"
+
+"@unhead/vue@^1.9.4":
+  version "1.9.4"
+  resolved "https://registry.npmmirror.com/@unhead/vue/-/vue-1.9.4.tgz#8e82af43b3085d9952827ec390e1bf70025107dc"
+  integrity sha512-F37bDhhieWQJyXvFV8NmrOXoIVJMhxVI/0ZUDrI9uTkMCofjfKWDJ+Gz0iYdhYF9mjQ5BN+pM31Zpxi+fN5Cfg==
+  dependencies:
+    "@unhead/schema" "1.9.4"
+    "@unhead/shared" "1.9.4"
+    hookable "^5.5.3"
+    unhead "1.9.4"
+
 "@vitejs/plugin-vue-jsx@^3.1.0":
   version "3.1.0"
   resolved "https://registry.npmmirror.com/@vitejs/plugin-vue-jsx/-/plugin-vue-jsx-3.1.0.tgz#9953fd9456539e1f0f253bf0fcd1289e66c67cd1"
@@ -1831,6 +1864,16 @@ undici-types@~5.26.4:
   resolved "https://registry.npmmirror.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
   integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
 
+unhead@1.9.4:
+  version "1.9.4"
+  resolved "https://registry.npmmirror.com/unhead/-/unhead-1.9.4.tgz#74ce5be18e236d3522def0c6c012912cca83e21e"
+  integrity sha512-QVU0y3KowRu2cLjXxfemTKNohK4vdEwyahoszlEnRz0E5BTNRZQSs8AnommorGmVM7DvB2t4dwWadB51wDlPzw==
+  dependencies:
+    "@unhead/dom" "1.9.4"
+    "@unhead/schema" "1.9.4"
+    "@unhead/shared" "1.9.4"
+    hookable "^5.5.3"
+
 unimport@^3.7.1:
   version "3.7.1"
   resolved "https://registry.npmmirror.com/unimport/-/unimport-3.7.1.tgz#37250d0f3f2dcf1e1b66ed13728db0e9f50ba0c3"
@@ -2028,3 +2071,8 @@ yallist@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmmirror.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
+
+zhead@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.npmmirror.com/zhead/-/zhead-2.2.4.tgz#87cd1e2c3d2f465fa9f43b8db23f9716dfe6bed7"
+  integrity sha512-8F0OI5dpWIA5IGG5NHUg9staDwz/ZPxZtvGVf01j7vHqSyZ0raHY+78atOVxRqb73AotX22uV1pXt3gYSstGag==

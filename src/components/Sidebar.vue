@@ -16,9 +16,7 @@ const router = useRouter()
 const clickHandler = (path: String) => {
   console.log("click")
   //导航跳转
-  router.push({
-    path: path
-  })
+  router.push(path)
 }
 
 const menus=ref([])

@@ -4,7 +4,7 @@ import {useStorage} from "@vueuse/core";
 import UserInfo from "@/components/headers/UserInfo.vue";
 import SwitchDarkMode from "@/components/headers/SwitchDarkMode.vue";
 import SwitchLanguage from "@/components/headers/SwitchLanguage.vue";
-import {Expand, Fold, Refresh} from "@element-plus/icons-vue";
+import {ArrowRight, Expand, Fold, Refresh} from "@element-plus/icons-vue";
 import SettingButton from "@/components/headers/SettingButton.vue";
 
 const collapse=useStorage("collapse",true)
@@ -24,11 +24,10 @@ const toggleCollapse=()=>{
       </el-button>
       <div class="left">
         <!--       刷新按钮-->
-        <el-button text @click="" circle>
-          <el-icon :size="20">
-            <Refresh/>
-          </el-icon>
-        </el-button>
+        <el-breadcrumb :separator-icon="ArrowRight">
+          <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
+          <el-breadcrumb-item>promotion management</el-breadcrumb-item>
+        </el-breadcrumb>
       </div>
       <div class="space"></div>
       <div class="right">

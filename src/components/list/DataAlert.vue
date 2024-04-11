@@ -3,9 +3,12 @@
 import {InfoFilled} from "@element-plus/icons-vue";
 import {computed, watch, ref} from "vue";
 import {useCssVar} from "@vueuse/core";
+import {useTheme} from "@/store/theme-store";
 //计算属性 style
+const color=ref(null)
 const style = computed(() => {
-  let r = useCssVar("--primary-color")
+  color.value = useCssVar('--primary-color')
+  let r = color.value
   //hex转rgb
   //@ts-ignore
   const rgb = r.value.match(/^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i).slice(1).map(x => parseInt(x, 16))
@@ -21,7 +24,12 @@ const props = defineProps({
     default: true
   }
 })
-
+const theme=useTheme()
+watch(()=>theme.primary, (val) => {
+  console.log("primary改变",val)
+  //通知style改变
+  color.value=val
+})
 const all = ref(false)
 </script>
 

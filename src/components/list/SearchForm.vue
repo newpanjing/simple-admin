@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref} from "vue"
+import {computed, ref} from "vue"
 import {ArrowDown, ArrowUp, RefreshRight, Search} from "@element-plus/icons-vue";
 
 const collapse=ref(true);
@@ -40,11 +40,18 @@ const fields = ref<any>([{
 }])
 import {Ripple} from "@/directive/ripple";
 const vRipple=Ripple
+
+const style=computed(()=>{
+
+  return {
+    height:collapse.value?'40px':''
+  }
+})
 </script>
 
 <template>
   <div class="search-form">
-    <div :class="{rows:true,'row-single':!collapse}">
+    <div class="rows" :style="style">
         <div class="field-item"  v-for="item in fields">
           <div class="label">{{item.label}}：</div>
           <div class="component">
@@ -68,7 +75,11 @@ const vRipple=Ripple
     </div>
   </div>
 </template>
-
+<style lang="scss">
+.el-date-editor.el-input{
+  width: 100%!important;
+}
+</style>
 <style scoped lang="scss">
 .search-form{
   display: flex;
@@ -76,10 +87,6 @@ const vRipple=Ripple
     display: flex;
     flex-flow: row wrap;
     gap: 20px;
-    transition: height 0.3s;
-  }
-  .row-single{
-    height: 40px;
     overflow: hidden;
   }
   .field-item{
@@ -109,4 +116,5 @@ const vRipple=Ripple
     justify-content: flex-end;
   }
 }
+
 </style>

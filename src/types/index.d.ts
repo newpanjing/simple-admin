@@ -3,6 +3,7 @@ interface MenuType {
     text: string,
     icon: any,
     link: string,
+    external: boolean,
     children: MenuType[]
 }
 

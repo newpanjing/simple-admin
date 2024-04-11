@@ -8,14 +8,6 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
-const clickHandler = (menu: any) => {
-  console.log(menu)
-  // if (menu.external) {
-  //   window.open(menu.link)
-  // } else {
-  //   router.push(menu.link)
-  // }
-}
 
 const menus = ref<any>([{
   id: 1,
@@ -38,11 +30,11 @@ const menus = ref<any>([{
     text: "系统管理", children: [{
       id: 401,
       text: '用户管理',
-      link: '/user/list',
+      link: '/list/user',
       children: [{
         id: 4011,
         text: '用户列表',
-        link: '/user/list',
+        link: '/list/aaa',
       }, {
         id: 4012,
         text: '用户详情',
@@ -99,7 +91,7 @@ const collapse = useStorage("collapse", true)
         @open="handleOpen"
         @close="handleClose">
 
-      <SubMenu v-for="(menu,index) in menus" :key="index" :menu="menu" @open="clickHandler"></SubMenu>
+      <SubMenu v-for="(menu,index) in menus" :key="index" :menu="menu"></SubMenu>
     </el-menu>
   </div>
 </template>

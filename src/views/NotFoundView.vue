@@ -2,8 +2,14 @@
 
 import {HomeFilled} from "@element-plus/icons-vue";
 import {useHead} from "@unhead/vue";
+import {useRoute} from "vue-router";
+import {computed} from "vue";
+
 useHead({
-  title: 'Page Not Found'
+  title: 'Page not found'
+})
+const title = computed(() => {
+  return "Not found: " + useRoute().path
 })
 </script>
 
@@ -138,7 +144,7 @@ useHead({
         </svg>
       </div>
       <div>
-        <el-alert type="warning" description="The page you visited does not exist." :closable="false"/>
+        <el-alert type="warning" :title="title" description="The page you visited does not exist." :closable="false"/>
       </div>
       <el-button type="primary" :icon="HomeFilled" @click="$router.push('/')">Back Home</el-button>
     </section>
@@ -146,14 +152,15 @@ useHead({
 </template>
 
 <style scoped>
-.not-found{
+.not-found {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex: 1 1 0%;
 }
-.not-found section{
+
+.not-found section {
   display: flex;
   flex-direction: column;
   justify-items: center;

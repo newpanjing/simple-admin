@@ -28,9 +28,9 @@ const open = (item:any) => {
       </el-icon>
       <span>{{ menu.text }}</span>
     </template>
-    <SubItem v-for="(item, index) in menu.children" :key="index" :menu="item" @click="open"/>
+    <SubItem v-for="(item, index) in menu.children" :key="index" :menu="item" @open="open"/>
   </el-sub-menu>
-  <SubItem v-else :menu="menu" @click="open"/>
+  <SubItem v-else :menu="menu" @open="open"/>
 </template>
 
 <style scoped>

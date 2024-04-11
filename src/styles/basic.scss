@@ -31,3 +31,23 @@ html,body{
   align-items: center;
   flex-direction: row;
 }
+
+a{
+  text-decoration: none;
+  &:hover, &:active, &:focus, &:visited, &:link{
+    text-decoration: none;
+  }
+}
+
+//v-cloak
+[v-cloak] {
+  display: none;
+}
+//fade
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s; /* 设置过渡的持续时间和属性 */
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0; /* 设置进入和离开时的透明度 */
+}

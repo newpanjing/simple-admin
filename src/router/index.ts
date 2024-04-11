@@ -7,7 +7,18 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: () => import("@/views/HomeView.vue")
+            component: () => import("@/views/HomeView.vue"),
+            meta: {
+                title: '首页',
+            }
+        },{
+            path: '/login',
+            name: 'login',
+            meta: {
+                title: '登录',
+                noLayout:true,
+            },
+            component: () => import("@/views/LoginView.vue")
         }, {
             path: '/scene/:id',
             name: 'scene',
@@ -24,9 +35,17 @@ const router = createRouter({
         }, {
             path: '/list/:id',
             name: 'list',
+            meta: {
+                title: '列表',
+            },
             component: () => import("@/views/ListView.vue")
         }
     ]
+})
+
+router.beforeEach((to, from) => {
+    document.title = to.meta?.title || 'vue3-vite'
+    console.log(to.meta)
 })
 
 export default router

@@ -17,16 +17,16 @@ const userInfo = {
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item>
-            首页
+            <router-link to="/">首页</router-link>
           </el-dropdown-item>
           <el-dropdown-item divided>
-            个人信息
+            <router-link to="/profile">个人信息</router-link>
           </el-dropdown-item>
           <el-dropdown-item>
             个人信息
           </el-dropdown-item>
           <el-dropdown-item divided>
-            退出
+            <router-link to="/login">退出</router-link>
           </el-dropdown-item>
         </el-dropdown-menu>
       </template>

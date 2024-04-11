@@ -12,7 +12,6 @@ import {i18n,t} from "@/messages/i18n";
 
 const languages = ref([])
 onMounted(() => {
-  console.log(i18n.global.availableLocales)
   //定义一个数组
   let locales = []
   i18n.global.availableLocales.forEach((item) => {

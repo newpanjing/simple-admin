@@ -2,40 +2,44 @@
 
 import Sidebar from "@/components/Sidebar.vue";
 import LayoutHeader from "@/components/LayoutHeader.vue";
+
 </script>
 <template>
   <div class="layout">
-  <el-container>
-    <el-aside class="aside">
-      <Sidebar class="sidebar"/>
-    </el-aside>
     <el-container>
-      <el-header class="header">
-        <LayoutHeader/>
-      </el-header>
-      <el-main class="main">
-        <slot></slot>
-      </el-main>
+      <el-aside class="aside">
+        <Sidebar class="sidebar"/>
+      </el-aside>
+      <el-container>
+        <el-header class="header">
+          <LayoutHeader/>
+        </el-header>
+        <el-main class="main">
+          <slot></slot>
+        </el-main>
+      </el-container>
     </el-container>
-  </el-container>
   </div>
+
 </template>
 <style lang="scss">
-.layout{
+.layout {
   height: 100%;
   display: flex;
-  .aside{
+
+  .aside {
     display: flex;
     width: auto;
   }
+
   flex-direction: row;
 
-  .header{
+  .header {
     padding: 0;
     height: 54px;
   }
 
-  .main{
+  .main {
     display: flex;
     flex-direction: column;
     overflow: auto;

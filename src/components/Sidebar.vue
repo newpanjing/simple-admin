@@ -30,7 +30,6 @@ const menus = ref<any>([{
     text: "系统管理", children: [{
       id: 401,
       text: '用户管理',
-      link: '/list/user',
       children: [{
         id: 4011,
         text: '用户列表',
@@ -38,7 +37,7 @@ const menus = ref<any>([{
       }, {
         id: 4012,
         text: '用户详情',
-        link: '/user/detail',
+        link: '/list/detail',
       }]
     }, {
       id: 402,

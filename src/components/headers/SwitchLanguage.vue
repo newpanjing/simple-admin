@@ -9,6 +9,7 @@ import {Check} from "@element-plus/icons-vue";
 
 //获取当前语言
 import {i18n, t} from "@/messages/i18n";
+import {useLocale} from "@/store/locale";
 
 const languages = ref([])
 onMounted(() => {
@@ -22,11 +23,12 @@ onMounted(() => {
     languages.value = locales
   })
 })
-const language = useStorage("language", "zh")
+
+const localeStore=useLocale()
 
 function change(item: any) {
   i18n.global.locale = item.code
-  language.value = item.code
+  localeStore.setLocale(item.code)
 }
 </script>
 
@@ -37,7 +39,7 @@ function change(item: any) {
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item v-for="item in languages" @click="change(item)">
-          <el-icon v-if="language==item.code">
+          <el-icon v-if="localeStore.locale==item.code">
             <Check/>
           </el-icon>
           <el-icon v-else></el-icon>

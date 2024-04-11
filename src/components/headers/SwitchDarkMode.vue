@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-const { Check, Sunny,Moon } = ElementPlusIconsVue
-import { ref } from 'vue'
-import { useDark, useToggle } from '@vueuse/core'
+const { Sunny,Moon } = ElementPlusIconsVue
+import { useDark } from '@vueuse/core'
 const isDark = useDark()
-const toggleDark = useToggle(isDark)
+
 </script>
 <template>
   <el-switch

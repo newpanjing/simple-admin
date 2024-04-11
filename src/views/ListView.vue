@@ -5,8 +5,10 @@ import DataTable from "@/components/list/DataTable.vue";
 import DataPagination from "@/components/list/DataPagination.vue";
 import DataAction from "@/components/list/DataAction.vue";
 import DataAlert from "@/components/list/DataAlert.vue";
+import {useTheme} from "@/store/theme-store";
 
 const route = useRoute()
+
 </script>
 
 <template>

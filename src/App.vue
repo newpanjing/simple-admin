@@ -11,23 +11,24 @@ watch(route, () => {
 //导入element-plus语言包
 import zhCn from "element-plus/dist/locale/zh-cn.mjs"
 import en from "element-plus/dist/locale/en.mjs"
-import {useStorage} from "@vueuse/core";
 import {setPrimaryColor} from "@/theme";
+
+import {useTheme} from "@/store/theme-store";
+import {useLocale} from "@/store/locale";
 
 const maps = {
   "zh": zhCn,
   "en": en,
 }
-const language = useStorage("language", "zh")
-const locale = computed(() => {
-  return maps[language.value] || zhCn
-})
-import {primary} from "@/theme/colors";
 
-const primaryColor = useStorage("primaryColor", primary)
+const localeStore=useLocale()
+const locale = computed(() => {
+  return maps[localeStore.locale] || zhCn
+})
+
 onMounted(() => {
   //读取默认主题色
-  setPrimaryColor(primaryColor.value)
+  setPrimaryColor(useTheme().primary)
 })
 </script>
 <template>

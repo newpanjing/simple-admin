@@ -15,6 +15,9 @@ html,body{
   align-items: center;
   flex-direction: row;
 }
+.flex-space-between{
+  justify-content: space-between;
+}
 .flex-column{
   display: flex;
   align-items: center;

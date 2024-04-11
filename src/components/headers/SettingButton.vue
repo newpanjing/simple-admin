@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {Setting} from "@element-plus/icons-vue";
+import {Close, Setting} from "@element-plus/icons-vue";
 import {ref} from "vue"
 //打开右侧设置
 const drawer = ref(false)
@@ -10,7 +10,12 @@ const drawer = ref(false)
 <template>
   <el-button :icon="Setting" circle text @click="drawer=true"></el-button>
   <el-drawer v-model="drawer" title="I am the title" :with-header="false">
-    <span>Hi there!</span>
+    <div class="flex flex-space-between">
+        <span>{{$t("Layout Config")}}</span>
+        <el-button @click="drawer=false" :icon="Close" circle text></el-button>
+    </div>
+    <el-divider/>
+
   </el-drawer>
 </template>
 

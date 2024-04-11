@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 
 import SubMenu from "@/components/sidebar/SubMenu.vue"
-import {MenuType} from "@/types"
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
@@ -18,7 +17,7 @@ const clickHandler = (menu: any) => {
   // }
 }
 
-const menus = ref<MenuType>([{
+const menus = ref<any>([{
   id: 1,
   text: 'Dashboard',
   children: [

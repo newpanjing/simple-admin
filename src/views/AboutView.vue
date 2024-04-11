@@ -11,7 +11,7 @@ const isDark=useDark()
   <div class="about">
     {{ welcome }}
     <h1>This is an about page</h1>
-    <button @click="welcome=!welcome">Click me</button>
+    <button>Click me</button>
     <el-button>Default</el-button>
     {{ isDark }}
     <!-- 切换主题 -->

@@ -12,6 +12,7 @@ watch(route, () => {
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import en from 'element-plus/dist/locale/en.mjs'
 import {useStorage} from "@vueuse/core";
+import {setPrimaryColor} from "@/theme";
 
 const maps = {
   "zh": zhCn,
@@ -20,6 +21,11 @@ const maps = {
 const language = useStorage("language", "zh")
 const locale = computed(() => {
   return maps[language.value] || zhCn
+})
+const primaryColor = useStorage("primaryColor", "#166cff")
+onMounted(() => {
+  //读取默认主题色
+  setPrimaryColor(primaryColor.value)
 })
 </script>
 <template>

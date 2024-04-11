@@ -7,7 +7,7 @@ import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'
 
 import "@/styles/basic.scss"
-// import 'element-plus/theme-chalk/src/var.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 import 'element-plus/dist/index.css';
 import "@/styles/element.scss"
 import "@/styles/var.scss"

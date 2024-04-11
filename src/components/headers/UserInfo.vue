@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import {Close, HomeFilled, User} from "@element-plus/icons-vue";
+
 function logout() {
 }
 
@@ -6,31 +8,43 @@ const userInfo = {
   name: "张三",
   avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
 }
+const router = useRouter()
+
+function to(url: any) {
+  router.push(url)
+}
 </script>
 
 <template>
-    <el-dropdown>
-      <div class="user">
-        <el-avatar :src="userInfo.avatar"/>
-        <span>Jackie ma</span>
-      </div>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item>
-            <router-link to="/">首页</router-link>
-          </el-dropdown-item>
-          <el-dropdown-item divided>
-            <router-link to="/profile">个人信息</router-link>
-          </el-dropdown-item>
-          <el-dropdown-item>
-            个人信息
-          </el-dropdown-item>
-          <el-dropdown-item divided>
-            <router-link to="/login">退出</router-link>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
+  <el-dropdown trigger="click">
+    <div class="user">
+      <el-avatar :src="userInfo.avatar"/>
+      <span>Jackie ma</span>
+    </div>
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item @click="to('/')">
+          <el-icon>
+            <HomeFilled/>
+          </el-icon>
+          {{ $t('Home')}}
+        </el-dropdown-item>
+        <el-dropdown-item divided @click="to('/profile')">
+          <el-icon>
+            <User/>
+          </el-icon>
+          {{$t('Profile')}}
+        </el-dropdown-item>
+
+        <el-dropdown-item divided @click="logout">
+          <el-icon>
+            <Close/>
+          </el-icon>
+          {{$t('Logout')}}
+        </el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
 
 </template>
 

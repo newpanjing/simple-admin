@@ -10,6 +10,9 @@ const messages= {
     },
     zh: {
         "Back home":"返回首页",
+        Home: "首页",
+        Profile: "个人中心",
+        Logout: "退出登录",
         message: {
             hello: '你好，世界！'
         }

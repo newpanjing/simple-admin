@@ -56,6 +56,5 @@ export const setPrimaryColor = function (color: string) {
     }
     for (let key in map) {
         document.documentElement.style.setProperty(key, map[key]);
-        console.log(key, map[key])
     }
 }

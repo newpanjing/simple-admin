@@ -44,8 +44,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-    document.title = to.meta?.title || 'vue3-vite'
-    console.log(to.meta)
+    document.title = to.meta?.title || 'Noon Admin Pro'
+    // console.log(to.meta)
 })
 
 export default router

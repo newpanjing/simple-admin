@@ -64,6 +64,7 @@ declare module 'vue' {
     SubMenu: typeof import('./src/components/sidebar/SubMenu.vue')['default']
     SwitchDarkMode: typeof import('./src/components/headers/SwitchDarkMode.vue')['default']
     SwitchLanguage: typeof import('./src/components/headers/SwitchLanguage.vue')['default']
+    Theme: typeof import('./src/components/headers/Theme.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     UserInfo: typeof import('./src/components/headers/UserInfo.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']

@@ -2,6 +2,7 @@
 
 import {Close, Setting} from "@element-plus/icons-vue";
 import {ref} from "vue"
+import Theme from "@/components/headers/Theme.vue";
 //打开右侧设置
 const drawer = ref(false)
 
@@ -14,7 +15,10 @@ const drawer = ref(false)
         <span>{{$t("Layout Config")}}</span>
         <el-button @click="drawer=false" :icon="Close" circle text></el-button>
     </div>
-    <el-divider/>
+    <el-divider>
+      {{ $t("Theme") }}
+    </el-divider>
+    <Theme/>
 
   </el-drawer>
 </template>

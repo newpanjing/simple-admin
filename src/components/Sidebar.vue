@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 
 import SubMenu from "@/components/sidebar/SubMenu.vue"
+import {useRoute} from "vue-router";
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
@@ -75,10 +76,12 @@ const collapse = useStorage("collapse", false)
 
 <template>
   <div :class="{sidebar:true,collapse:collapse}">
-    <div class="banner">
-      <img src="../assets/logo.svg" alt="logo" class="logo">
-      <h3 class="mb-2 title">Admin Pro</h3>
-    </div>
+    <router-link to="/">
+      <div class="banner">
+          <img src="../assets/logo.svg" alt="logo" class="logo">
+          <h3 class="mb-2 title">Admin Pro</h3>
+      </div>
+    </router-link>
     <el-menu
         active-text-color="var(--sidebar-text-active-color)"
         background-color="var(--sidebar-bg-color)"
@@ -97,6 +100,10 @@ const collapse = useStorage("collapse", false)
 </template>
 
 <style lang="scss">
+.router-link-active{
+  //不显示下划线
+  text-decoration: none;
+}
 .sidebar {
   display: flex;
   flex-direction: column;

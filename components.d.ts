@@ -7,10 +7,12 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Animation: typeof import('./src/components/layoutConfig/Animation.vue')['default']
     DataAction: typeof import('./src/components/list/DataAction.vue')['default']
     DataAlert: typeof import('./src/components/list/DataAlert.vue')['default']
     DataPagination: typeof import('./src/components/list/DataPagination.vue')['default']
     DataTable: typeof import('./src/components/list/DataTable.vue')['default']
+    Display: typeof import('./src/components/layoutConfig/Display.vue')['default']
     ElAlert: typeof import('element-plus/es')['ElAlert']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAutoResizer: typeof import('element-plus/es')['ElAutoResizer']
@@ -55,7 +57,9 @@ declare module 'vue' {
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
     Layout: typeof import('./src/components/Layout.vue')['default']
+    LayoutConfig: typeof import('./src/components/layoutConfig/LayoutConfig.vue')['default']
     LayoutHeader: typeof import('./src/components/LayoutHeader.vue')['default']
+    NavigationBar: typeof import('./src/components/layoutConfig/NavigationBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchForm: typeof import('./src/components/list/SearchForm.vue')['default']
@@ -65,8 +69,8 @@ declare module 'vue' {
     SubMenu: typeof import('./src/components/sidebar/SubMenu.vue')['default']
     SwitchDarkMode: typeof import('./src/components/headers/SwitchDarkMode.vue')['default']
     SwitchLanguage: typeof import('./src/components/headers/SwitchLanguage.vue')['default']
-    Theme: typeof import('./src/components/theme/Theme.vue')['default']
-    ThemeBlock: typeof import('./src/components/theme/ThemeBlock.vue')['default']
+    Theme: typeof import('./src/components/layoutConfig/Theme.vue')['default']
+    ThemeBlock: typeof import('./src/components/layoutConfig/ThemeBlock.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     UserInfo: typeof import('./src/components/headers/UserInfo.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']

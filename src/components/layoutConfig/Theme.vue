@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ThemeBlock from "@/components/theme/ThemeBlock.vue";
+import ThemeBlock from "@/components/layoutConfig/ThemeBlock.vue";
 import {ref} from "vue";
 
 import colors from "@/theme/colors";

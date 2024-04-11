@@ -70,7 +70,7 @@ const style=computed(()=>{
     <div class="actions">
       <el-button type="primary" v-ripple :icon="Search" plain>查询</el-button>
       <el-button :icon="RefreshRight">重置</el-button>
-      <el-button text :icon="ArrowUp" v-if="collapse" @click="collapse=!collapse">收起</el-button>
+      <el-button text :icon="ArrowUp" v-if="!collapse" @click="collapse=!collapse">收起</el-button>
       <el-button text :icon="ArrowDown" v-else @click="collapse=!collapse">展开</el-button>
     </div>
   </div>

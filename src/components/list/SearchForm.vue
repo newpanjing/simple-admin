@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {ref} from "vue"
-import {ArrowDown, ArrowUp} from "@element-plus/icons-vue";
+import {ArrowDown, ArrowUp, RefreshRight, Search} from "@element-plus/icons-vue";
 
 const collapse=ref(true);
 
-const fields = ref([{
+const fields = ref<any>([{
   label:'全局搜索',
   prop: 'q',
   value: '',
@@ -38,7 +38,8 @@ const fields = ref([{
     value:'1'
   }]
 }])
-
+import {Ripple} from "@/directive/ripple";
+const vRipple=Ripple
 </script>
 
 <template>
@@ -60,8 +61,8 @@ const fields = ref([{
         </div>
     </div>
     <div class="actions">
-      <el-button type="primary">查询</el-button>
-      <el-button>重置</el-button>
+      <el-button type="primary" v-ripple :icon="Search" plain>查询</el-button>
+      <el-button :icon="RefreshRight">重置</el-button>
       <el-button text :icon="ArrowUp" v-if="collapse" @click="collapse=!collapse">收起</el-button>
       <el-button text :icon="ArrowDown" v-else @click="collapse=!collapse">展开</el-button>
     </div>

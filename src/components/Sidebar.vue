@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 
-// import type Menu from "@/types/menu";
-import SubMenu from "@/components/sidebar/SubMenu.vue";
+import SubMenu from "@/components/sidebar/SubMenu.vue"
+import {MenuType} from "@/types"
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
@@ -9,7 +9,6 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
-const router = useRouter()
 const clickHandler = (menu: any) => {
   console.log(menu)
   // if (menu.external) {
@@ -19,7 +18,7 @@ const clickHandler = (menu: any) => {
   // }
 }
 
-const menus = ref([{
+const menus = ref<MenuType>([{
   id: 1,
   text: 'Dashboard',
   children: [
@@ -121,7 +120,7 @@ const collapse = useStorage("collapse", true)
   }
 
   .menu {
-    flex: 1 1 0%;
+    flex: 1 1 0;
   }
 
   .sidebar-footer {

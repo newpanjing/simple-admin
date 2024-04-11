@@ -25,6 +25,7 @@ const hasChild = computed(() => {
   return props.menu.children && props.menu.children.length > 0
 })
 
+
 </script>
 
 <template>

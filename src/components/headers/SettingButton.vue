@@ -2,7 +2,7 @@
 
 import {Close, Setting} from "@element-plus/icons-vue";
 import {ref} from "vue"
-import Theme from "@/components/headers/Theme.vue";
+import Theme from "@/components/theme/Theme.vue";
 //打开右侧设置
 const drawer = ref(false)
 

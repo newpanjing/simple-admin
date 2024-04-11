@@ -1,26 +1,26 @@
 import {createI18n} from 'vue-i18n'
 import {useStorage} from "@vueuse/core";
-const messages= {
+
+const messages = {
     en: {
-        zh:"简体中文",
-        en:"English",
+        zh: "简体中文",
+        en: "English",
         message: {
             hello: 'Hello World!'
         }
     },
     zh: {
-        "Back home":"返回首页",
+        "Back home": "返回首页",
         Home: "首页",
         Profile: "个人中心",
         Logout: "退出登录",
-        message: {
-            hello: '你好，世界！'
-        }
+        "Layout Config": "布局配置",
+        Theme: "主题",
     },
 }
 const lang = navigator.language.substring(0, 2)
 const language = useStorage("language", lang)
-export const i18n=createI18n({
+export const i18n = createI18n({
     locale: language.value, // set locale
     fallbackLocale: 'en', // set fallback locale
     messages, // set locale messages
@@ -30,4 +30,4 @@ export const i18n=createI18n({
     silentFallbackWarn: true,
 })
 
-export const t=i18n.global.t
+export const t = i18n.global.t

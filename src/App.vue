@@ -9,8 +9,8 @@ watch(route, () => {
   isShowLayout.value = route.name !== "login"
 })
 //导入element-plus语言包
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
-import en from 'element-plus/dist/locale/en.mjs'
+import zhCn from "element-plus/dist/locale/zh-cn.mjs"
+import en from "element-plus/dist/locale/en.mjs"
 import {useStorage} from "@vueuse/core";
 import {setPrimaryColor} from "@/theme";
 
@@ -22,7 +22,9 @@ const language = useStorage("language", "zh")
 const locale = computed(() => {
   return maps[language.value] || zhCn
 })
-const primaryColor = useStorage("primaryColor", "#166cff")
+import {primary} from "@/theme/colors";
+
+const primaryColor = useStorage("primaryColor", primary)
 onMounted(() => {
   //读取默认主题色
   setPrimaryColor(primaryColor.value)

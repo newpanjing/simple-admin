@@ -7,7 +7,7 @@ import SwitchLanguage from "@/components/headers/SwitchLanguage.vue";
 import {ArrowRight, Expand, Fold, Refresh} from "@element-plus/icons-vue";
 import SettingButton from "@/components/headers/SettingButton.vue";
 
-const collapse=useStorage("collapse",true)
+const collapse=useStorage("collapse",false)
 const toggleCollapse=()=>{
   collapse.value=!collapse.value
 }
@@ -23,6 +23,7 @@ const toggleCollapse=()=>{
         </el-icon>
       </el-button>
       <div class="left">
+        {{$t("message.hello")}}
         <!--       刷新按钮-->
         <el-breadcrumb :separator-icon="ArrowRight">
           <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>

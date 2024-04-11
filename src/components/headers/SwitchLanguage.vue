@@ -1,17 +1,33 @@
 <script setup lang="ts">
 
 import IconLanguage from "@/components/icons/IconLanguage.vue";
+import {onMounted} from "vue";
+import {useI18n} from "vue-i18n";
+import {useStorage} from "@vueuse/core";
+import {Check} from "@element-plus/icons-vue";
 
-const languages=[
-    {
-        name:'中文',
-        value:'zh'
-    },
-    {
-        name:'English',
-        value:'en'
-    }
-]
+
+//获取当前语言
+import {i18n,t} from "@/messages/i18n";
+
+const languages = ref([])
+onMounted(() => {
+  console.log(i18n.global.availableLocales)
+  //定义一个数组
+  let locales = []
+  i18n.global.availableLocales.forEach((item) => {
+    locales.push({
+      name: t(item),
+      code: item
+    })
+    languages.value = locales
+  })
+})
+const language = useStorage("language", "zh")
+function change(item) {
+  i18n.global.locale = item.code
+  language.value = item.code
+}
 </script>
 
 <template>
@@ -20,7 +36,11 @@ const languages=[
     <el-button text :icon="IconLanguage" circle></el-button>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item v-for="item in languages">
+        <el-dropdown-item v-for="item in languages" @click="change(item)">
+          <el-icon v-if="language==item.code">
+            <Check/>
+          </el-icon>
+          <el-icon v-else></el-icon>
           <span v-text="item.name"></span>
         </el-dropdown-item>
       </el-dropdown-menu>

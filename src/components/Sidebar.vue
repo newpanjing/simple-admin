@@ -69,7 +69,7 @@ const menus = ref<any>([{
   {id: 408, text: "社区首页", link: '/community/list', external: true}
 ])
 //折叠展开
-const collapse = useStorage("collapse", true)
+const collapse = useStorage("collapse", false)
 
 </script>
 

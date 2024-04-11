@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import SubMenu from "@/components/sidebar/SubMenu.vue";
-import {Document} from "@element-plus/icons-vue";
+import {Document, Link} from "@element-plus/icons-vue";
 import {computed} from "vue";
 import type {MenuType} from "@/types";
+import {useStorage} from "@vueuse/core";
 
 const props = defineProps({
   menu: {
@@ -32,7 +33,8 @@ const hasChild = computed(() => {
   return props.menu.children && props.menu.children.length > 0
 })
 
-
+//判断是否折叠
+const collapse = useStorage("collapse", false)
 </script>
 
 <template>
@@ -43,6 +45,9 @@ const hasChild = computed(() => {
         <document/>
       </el-icon>
       <span>{{ menu.text }}</span>
+      <el-icon v-if="menu.external&&!collapse">
+        <Link/>
+      </el-icon>
       <SubMenu :menu="menu" v-if="hasItemChild(menu)" @open="open"/>
     </el-menu-item>
   </div>

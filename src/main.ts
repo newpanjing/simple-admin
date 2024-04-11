@@ -1,4 +1,3 @@
-// import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -15,10 +14,12 @@ import "@/styles/var.scss"
 import App from './App.vue'
 import router from './router'
 import { createHead } from '@unhead/vue'
-
+import {i18n} from "@/messages/i18n";
 
 const app = createApp(App)
 const head = createHead()
+
+app.use(i18n)
 app.use(head)
 
 app.use(ElementPlus)

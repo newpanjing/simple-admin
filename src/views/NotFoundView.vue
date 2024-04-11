@@ -146,7 +146,7 @@ const title = computed(() => {
       <div>
         <el-alert type="warning" :title="title" description="The page you visited does not exist." :closable="false"/>
       </div>
-      <el-button type="primary" :icon="HomeFilled" @click="$router.push('/')">Back Home</el-button>
+      <el-button type="primary" :icon="HomeFilled" @click="$router.push('/')">{{$t("Back home")}}</el-button>
     </section>
   </div>
 </template>

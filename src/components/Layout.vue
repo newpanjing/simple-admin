@@ -4,6 +4,7 @@ import Sidebar from "@/components/Sidebar.vue";
 import LayoutHeader from "@/components/LayoutHeader.vue";
 import {onMounted} from "vue";
 import TabsView from "@/components/tabs/TabsView.vue";
+import {useThemeStore} from "@/store/theme-store";
 const show=ref(false);
 
 onMounted(()=>{
@@ -12,6 +13,8 @@ onMounted(()=>{
     show.value=true;
   },50)
 })
+
+const themeStore=useThemeStore();
 </script>
 <template>
   <div class="layout" v-cloak v-show="show">
@@ -23,7 +26,9 @@ onMounted(()=>{
         <el-header class="header">
           <LayoutHeader/>
         </el-header>
-        <TabsView/>
+        <transition name="fade">
+          <TabsView v-if="themeStore.tabs"/>
+        </transition>
         <el-main class="main">
           <slot></slot>
         </el-main>

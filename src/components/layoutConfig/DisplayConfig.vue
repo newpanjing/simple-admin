@@ -39,6 +39,15 @@ const breadcrumb = computed({
     themeStore.setBreadcrumb(val)
   }
 })
+const tabs = computed({
+  get() {
+    return themeStore.tabs
+  },
+  set(val) {
+    themeStore.setTabs(val)
+  }
+})
+
 </script>
 
 <template>
@@ -69,7 +78,14 @@ const breadcrumb = computed({
         <el-switch v-model="breadcrumb" />
       </el-col>
     </el-row>
-
+    <el-row>
+      <el-col :span="20">
+        {{ $t("Tabs") }}
+      </el-col>
+      <el-col :span="4">
+        <el-switch v-model="tabs" />
+      </el-col>
+    </el-row>
   </div>
 </template>
 

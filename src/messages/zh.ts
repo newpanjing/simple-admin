@@ -22,4 +22,5 @@ export default{
     "Zoom":"缩放",
     "Fade":"淡入淡出",
     "SlideBottom":"下方滑出",
+    "Tabs":"标签栏"
 }

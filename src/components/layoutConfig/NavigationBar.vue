@@ -30,6 +30,15 @@ watch(isDark, (val) => {
     themeStore.setThemeLayout("dark")
   }
 })
+
+const breadcrumb = computed({
+  get() {
+    return themeStore.breadcrumb
+  },
+  set(val) {
+    themeStore.setBreadcrumb(val)
+  }
+})
 </script>
 
 <template>
@@ -51,6 +60,16 @@ watch(isDark, (val) => {
         </div>
       </template>
     </div>
+    <el-divider>{{$t("Display")}}</el-divider>
+    <el-row>
+      <el-col :span="20">
+        {{ $t("Breadcrumb") }}
+      </el-col>
+      <el-col :span="4">
+        <el-switch v-model="breadcrumb" />
+      </el-col>
+    </el-row>
+
   </div>
 </template>
 

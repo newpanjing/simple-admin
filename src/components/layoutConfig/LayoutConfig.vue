@@ -2,7 +2,6 @@
 
 import {Close} from "@element-plus/icons-vue";
 import Theme from "@/components/layoutConfig/Theme.vue";
-import Display from "@/components/layoutConfig/Display.vue";
 import NavigationBar from "@/components/layoutConfig/NavigationBar.vue";
 import SwitchDarkMode from "@/components/headers/SwitchDarkMode.vue";
 import {useDark} from "@vueuse/core";
@@ -34,7 +33,6 @@ const isDark = useDark()
     <Theme/>
 
     <NavigationBar/>
-    <Display/>
     <PageTransition/>
   </div>
 </template>

@@ -3,6 +3,12 @@ export interface ThemeStates {
     themeLayout:string
     setPrimary: (primary: string) => void
     setThemeLayout: (themeLayout: string) => void
+    //面包屑
+    breadcrumb: boolean
+    setBreadcrumb: (state: boolean) => void
+    //标签栏
+    tabs: boolean
+    setTabs: (state: boolean) => void
 }
 
 
@@ -17,3 +23,4 @@ export interface TransitionStates{
     type: string
     setType: (type: string) => void
 }
+

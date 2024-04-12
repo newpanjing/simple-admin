@@ -6,11 +6,18 @@ import SwitchDarkMode from "@/components/headers/SwitchDarkMode.vue";
 import SwitchLanguage from "@/components/headers/SwitchLanguage.vue";
 import {ArrowRight, Expand, Fold, Refresh} from "@element-plus/icons-vue";
 import SettingButton from "@/components/headers/SettingButton.vue";
+import {useThemeStore} from "@/store/theme-store";
+import {computed} from "vue";
 
 const collapse = useStorage("collapse", false)
 const toggleCollapse = () => {
   collapse.value = !collapse.value
 }
+const themeStore = useThemeStore()
+//是否启用面包屑
+const breadcrumb = computed(() => {
+  return themeStore.breadcrumb
+})
 </script>
 
 <template>
@@ -22,8 +29,8 @@ const toggleCollapse = () => {
       </el-icon>
     </el-button>
     <div class="left">
-      <!--       刷新按钮-->
-      <el-breadcrumb :separator-icon="ArrowRight">
+      <!-- 面包屑 -->
+      <el-breadcrumb :separator-icon="ArrowRight" v-if="breadcrumb">
         <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
         <el-breadcrumb-item>promotion management</el-breadcrumb-item>
       </el-breadcrumb>

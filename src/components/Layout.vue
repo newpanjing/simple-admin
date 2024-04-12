@@ -4,6 +4,7 @@ import Sidebar from "@/components/Sidebar.vue";
 import LayoutHeader from "@/components/LayoutHeader.vue";
 import {onMounted} from "vue";
 import {useRoute} from "vue-router";
+import Tabs from "@/components/tabs/Tabs.vue";
 const show=ref(false);
 
 onMounted(()=>{
@@ -24,6 +25,7 @@ onMounted(()=>{
           <LayoutHeader/>
         </el-header>
         <el-main class="main">
+          <Tabs/>
           <slot></slot>
         </el-main>
       </el-container>

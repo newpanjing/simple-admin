@@ -2,10 +2,10 @@
 
 import {Close} from "@element-plus/icons-vue";
 import Theme from "@/components/layoutConfig/Theme.vue";
-import NavigationBar from "@/components/layoutConfig/NavigationBar.vue";
 import SwitchDarkMode from "@/components/headers/SwitchDarkMode.vue";
 import {useDark} from "@vueuse/core";
 import PageTransition from "@/components/layoutConfig/PageTransition.vue";
+import DisplayConfig from "@/components/layoutConfig/DisplayConfig.vue";
 
 const emit = defineEmits(["close"]);
 const isDark = useDark()
@@ -32,7 +32,7 @@ const isDark = useDark()
     </el-divider>
     <Theme/>
 
-    <NavigationBar/>
+    <DisplayConfig/>
     <PageTransition/>
   </div>
 </template>

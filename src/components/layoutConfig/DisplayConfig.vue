@@ -27,7 +27,7 @@ function change(item: any) {
 const isDark = useDark()
 watch(isDark, (val) => {
   if(val){
-    themeStore.setThemeLayout("dark")
+    themeStore.setThemeLayout("default")
   }
 })
 

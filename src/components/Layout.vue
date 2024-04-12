@@ -3,8 +3,7 @@
 import Sidebar from "@/components/Sidebar.vue";
 import LayoutHeader from "@/components/LayoutHeader.vue";
 import {onMounted} from "vue";
-import {useRoute} from "vue-router";
-import Tabs from "@/components/tabs/Tabs.vue";
+import TabsView from "@/components/tabs/TabsView.vue";
 const show=ref(false);
 
 onMounted(()=>{
@@ -24,8 +23,8 @@ onMounted(()=>{
         <el-header class="header">
           <LayoutHeader/>
         </el-header>
+        <TabsView/>
         <el-main class="main">
-          <Tabs/>
           <slot></slot>
         </el-main>
       </el-container>
@@ -60,6 +59,7 @@ onMounted(()=>{
     flex-direction: column;
     overflow: auto;
     background-color: var(--component-bg);
+    padding: 0;
   }
 }
 </style>

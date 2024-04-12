@@ -37,8 +37,8 @@ watch(()=>route.path,(val)=>{
 </script>
 
 <template>
-  <div class="grid-content">
-    <div class="table-content">
+  <div class="grid">
+    <div class="table">
       <search-form/>
       <el-divider/>
       <data-action/>
@@ -59,10 +59,11 @@ watch(()=>route.path,(val)=>{
   width: 100%;
 }
 
-.grid-content {
+.grid {
   flex: 1;
   display: flex;
   flex-direction: column;
+  margin: 20px;
 }
 
 .info-bar {
@@ -74,7 +75,7 @@ watch(()=>route.path,(val)=>{
   background-color: var(--panel-bg);
 }
 
-.table-content {
+.table {
   flex: 1;
   padding: 20px;
   border-radius: 5px;

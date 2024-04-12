@@ -28,7 +28,6 @@ onMounted(() => {
   //读取默认主题色
   setPrimaryColor(useThemeStore().primary)
   theme.setThemeLayout(theme.themeLayout)
-  console.log("app:", new Date().getTime())
 })
 const route = useRoute()
 const transitionStore = useTransitionStore()

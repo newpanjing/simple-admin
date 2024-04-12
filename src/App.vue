@@ -25,10 +25,11 @@ const localeStore=useLocale()
 const locale = computed(() => {
   return maps[localeStore.locale] || zhCn
 })
-
+const theme=useTheme()
 onMounted(() => {
   //读取默认主题色
   setPrimaryColor(useTheme().primary)
+  theme.setThemeLayout(theme.themeLayout)
 })
 </script>
 <template>

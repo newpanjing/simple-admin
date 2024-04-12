@@ -40,7 +40,7 @@ const toggleCollapse = () => {
 
 <style scoped lang="scss">
 .header {
-  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+  //box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
   padding: 0 10px;
   display: flex;
   align-items: center;

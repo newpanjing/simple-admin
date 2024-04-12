@@ -25,7 +25,7 @@ export const getLevel = function (color: string, level: number) {
         b: mix(b),
     }
     const toHex = () => {
-        let {r,g,b}=rgb;
+        let {r, g, b} = rgb;
         let hex = "#";
         let hexR = r.toString(16);
         let hexG = g.toString(16);
@@ -45,10 +45,23 @@ export const getLevel = function (color: string, level: number) {
     return toHex()
 
 }
+
+
+export const hexToRgb = function (hex: string) {
+
+    let rgb = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return rgb ? [
+        parseInt(rgb[1], 16),
+        parseInt(rgb[2], 16),
+        parseInt(rgb[3], 16)
+    ] : null;
+}
+
 export const setPrimaryColor = function (color: string) {
     let map = {
         "--el-color-primary": color,
         "--primary-color": color,
+        "--sidebar-active-color": `rgba(${hexToRgb(color).join(',')},0.6)`
     }
     //其他颜色
     for (let i = 1; i <= 9; i++) {

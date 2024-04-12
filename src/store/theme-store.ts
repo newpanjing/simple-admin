@@ -1,25 +1,60 @@
 import {defineStore} from "pinia";
 import {primary} from "@/theme/colors";
 import {setPrimaryColor} from "@/theme";
-import type {ThemeStates} from "@/store/interface";
+import type {ThemeColor, ThemeStates} from "@/store/interface";
 
+const sidebarTheme = {
+    default: {
+        "--sidebar-text-active-color": "#FFF",
+        "--sidebar-bg-color": "#001525",
+        "--sidebar-text-color": "rgba(255, 255, 255, 0.65)",
+        "--sidebar-text-hover-color":"#FFF",
+        "--sidebar-bg-hover-color":"#182637",
+        "--sidebar-banner-color":"#FFF",
+    },
+    light: {
+        "--sidebar-text-active-color": "#FFF",
+        "--sidebar-bg-color": "#FFF",
+        "--sidebar-text-color": "#000",
+        "--el-menu-hover-bg-color":"#FFF",
+
+        "--sidebar-text-hover-color":"#000",
+        "--sidebar-bg-hover-color":"#f3f3f5",
+        "--sidebar-banner-color":"#000",
+    },
+    dark: {
+        "--sidebar-text-active-color": "#FFF",
+        "--sidebar-bg-color": "#001525",
+        "--sidebar-text-color": "rgba(255, 255, 255, 0.65)",
+        "--sidebar-text-hover-color":"#000",
+        "--sidebar-bg-hover-color":"#f3f3f5",
+        "--sidebar-banner-color":"#FFF",
+    }
+}
 export const useTheme = defineStore("theme-store", {
     state: (): ThemeStates => ({
         primary: primary,
+        themeLayout: "default"
     }),
     actions: {
         setPrimary(color: string) {
             this.primary = color
             setPrimaryColor(color)
-        }
+        },
+        setThemeLayout(layout: string) {
+            console.log(`设置主题${layout}`)
+            this.themeLayout = layout
+            let config=sidebarTheme[layout]
+            console.log(`config:`,config)
+            for (const key in config) {
+                document.documentElement.style.setProperty(key, config[key])
+            }
+        },
     },
     persist: {
         enabled: true,
         strategies: [
             {key: "_theme_store", storage: localStorage},
-
-            //定义字段的存储策略
-            // { storage: localStorage, paths: ['accessToken'] },
         ]
     },
 });

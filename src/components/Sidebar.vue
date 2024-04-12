@@ -82,8 +82,8 @@ const collapse = useStorage("collapse", false)
     </router-link>
     <el-menu
         active-text-color="var(--sidebar-text-active-color)"
-        background-color="var(--sidebar-bg-color)"
         text-color="var(--sidebar-text-color)"
+        background-color="var(--sidebar-bg-color)"
         default-active="2"
         class="menu"
         :show-timeout="300"
@@ -136,7 +136,7 @@ const collapse = useStorage("collapse", false)
   }
 
   .el-menu-item.is-active {
-    background-color: var(--primary-color);
+    background-color: var(--sidebar-active-color);
   }
 
   .banner {
@@ -157,7 +157,7 @@ const collapse = useStorage("collapse", false)
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      color: var(--sidebar-text-active-color);
+      color: var(--sidebar-banner-color);
     }
   }
 }

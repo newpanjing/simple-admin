@@ -9,8 +9,8 @@ import ElementPlus from 'element-plus'
 import "@/styles/basic.scss"
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import 'element-plus/dist/index.css';
-import "@/styles/element.scss"
 import "@/styles/var.scss"
+import "@/styles/element.scss"
 
 import App from './App.vue'
 import router from './router'

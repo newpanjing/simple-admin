@@ -1,13 +1,96 @@
 <script setup lang="ts">
 
+import {useTheme} from "@/store/theme-store";
+import {Check} from "@element-plus/icons-vue";
+
+const styles = [{
+  left: "#323547",
+  top: "#FFFFFF",
+  name: "default"
+}, {
+  left: "#FFFFFF",
+  top: "#FFFFFF",
+  name: "light"
+}, {
+  left: "#323547",
+  top: "#323547",
+  name: "dark"
+}]
+const body = "#f0f2f5"
+const themeStore = useTheme()
+
+function change(item: any) {
+  themeStore.setThemeLayout(item.name)
+}
 </script>
 
 <template>
-  <el-divider>
-    {{ $t("Navigation bar") }}
-  </el-divider>
+  <div>
+    <el-divider>
+      {{ $t("Navigation bar") }}
+    </el-divider>
+    <div class="grid">
+      <div class="item flex" v-for="item in styles" @click="change(item)">
+        <el-icon color="var(--primary-color)" class="icon" :size="20" v-if="themeStore.themeLayout === item.name">
+          <Check/>
+        </el-icon>
+        <div class="left" :style="{ backgroundColor: item.left }"></div>
+        <div class="right">
+          <div class="top" :style="{ backgroundColor: item.top }"></div>
+          <div class="body" :style="{backgroundColor:body}"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.grid {
+  display: flex;
+  gap: 20px;
+  //居中
+  justify-content: center;
+  align-items: center;
 
+  .item {
+    cursor: pointer;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+
+    .icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .left {
+      width: 10px;
+      height: 100%;
+    }
+
+    .right {
+      flex: 1 1 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      .top {
+        height: 10px;
+        width: 100%;
+      }
+
+      .body {
+        flex: 1 1 0;
+        width: 100%;
+      }
+    }
+  }
+}
 </style>

@@ -2,10 +2,19 @@
 
 import Sidebar from "@/components/Sidebar.vue";
 import LayoutHeader from "@/components/LayoutHeader.vue";
+import {onMounted} from "vue";
+import {useRoute} from "vue-router";
+const show=ref(false);
 
+onMounted(()=>{
+  //延迟50ms 防止页面闪一下
+  setTimeout(()=>{
+    show.value=true;
+  },50)
+})
 </script>
 <template>
-  <div class="layout">
+  <div class="layout" v-cloak v-show="show">
     <el-container>
       <el-aside class="aside">
         <Sidebar class="sidebar"/>
@@ -30,6 +39,8 @@ import LayoutHeader from "@/components/LayoutHeader.vue";
   .aside {
     display: flex;
     width: auto;
+    box-shadow: 2px 0 8px #1d23290d;
+    z-index: 101;
   }
 
   flex-direction: row;
@@ -37,6 +48,9 @@ import LayoutHeader from "@/components/LayoutHeader.vue";
   .header {
     padding: 0;
     height: 54px;
+    //底部阴影
+    box-shadow: 0 2px 8px #1d23290d;
+    z-index: 102;
   }
 
   .main {

@@ -5,7 +5,7 @@ import DataTable from "@/components/list/DataTable.vue";
 import DataPagination from "@/components/list/DataPagination.vue";
 import DataAction from "@/components/list/DataAction.vue";
 import DataAlert from "@/components/list/DataAlert.vue";
-import {onMounted, watch} from "vue";
+import {nextTick, onMounted, watch} from "vue";
 import {ElMessage} from "element-plus";
 
 const route = useRoute()
@@ -13,8 +13,10 @@ const tableBox = ref<any>(null)
 const height = ref("500px")
 onMounted(() => {
   console.log("创建了")
-  onResize()
   window.addEventListener("resize", onResize)
+  setTimeout(()=>{
+    onResize()
+  },50)
 })
 onUnmounted(() => {
   //移除事件监听
@@ -23,6 +25,9 @@ onUnmounted(() => {
 
 function onResize() {
   height.value = tableBox.value?.clientHeight + "px"
+  if(height.value === "0px") {
+    height.value = "500px"
+  }
 }
 watch(()=>route.path,(val)=>{
   //路由变动，更新数据

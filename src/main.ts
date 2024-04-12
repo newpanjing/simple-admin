@@ -11,6 +11,7 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
 import 'element-plus/dist/index.css';
 import "@/styles/var.scss"
 import "@/styles/element.scss"
+import "@/styles/transition.scss"
 
 import App from './App.vue'
 import router from './router'

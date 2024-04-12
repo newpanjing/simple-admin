@@ -9,7 +9,7 @@ import {Check} from "@element-plus/icons-vue";
 
 //获取当前语言
 import {i18n, t} from "@/messages/i18n";
-import {useLocale} from "@/store/locale";
+import {useLocaleStore} from "@/store/locale";
 
 const languages = ref([])
 onMounted(() => {
@@ -24,7 +24,7 @@ onMounted(() => {
   })
 })
 
-const localeStore=useLocale()
+const localeStore=useLocaleStore()
 
 function change(item: any) {
   i18n.global.locale = item.code

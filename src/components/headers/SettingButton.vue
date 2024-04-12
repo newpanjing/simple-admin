@@ -10,7 +10,7 @@ const drawer = ref(false)
 
 <template>
   <el-button :icon="Setting" circle text @click="drawer=true"></el-button>
-  <el-drawer v-model="drawer" :with-header="false">
+  <el-drawer v-model="drawer" :with-header="false" size="350px">
     <LayoutConfig @close="drawer=false"/>
   </el-drawer>
 </template>

@@ -3,7 +3,7 @@
 import {InfoFilled} from "@element-plus/icons-vue";
 import {computed, watch, ref} from "vue";
 import {useCssVar} from "@vueuse/core";
-import {useTheme} from "@/store/theme-store";
+import {useThemeStore} from "@/store/theme-store";
 //计算属性 style
 const color=ref(null)
 const style = computed(() => {
@@ -24,7 +24,7 @@ const props = defineProps({
     default: true
   }
 })
-const theme=useTheme()
+const theme=useThemeStore()
 watch(()=>theme.primary, (val) => {
   console.log("primary改变",val)
   //通知style改变

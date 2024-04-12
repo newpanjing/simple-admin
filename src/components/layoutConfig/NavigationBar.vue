@@ -1,7 +1,9 @@
 <script setup lang="ts">
 
-import {useTheme} from "@/store/theme-store";
+import {useThemeStore} from "@/store/theme-store";
 import {Check} from "@element-plus/icons-vue";
+import {useDark} from "@vueuse/core";
+import {watch} from "vue";
 
 const styles = [{
   left: "#323547",
@@ -17,11 +19,17 @@ const styles = [{
   name: "dark"
 }]
 const body = "#f0f2f5"
-const themeStore = useTheme()
+const themeStore = useThemeStore()
 
 function change(item: any) {
   themeStore.setThemeLayout(item.name)
 }
+const isDark = useDark()
+watch(isDark, (val) => {
+  if(val){
+    themeStore.setThemeLayout("dark")
+  }
+})
 </script>
 
 <template>
@@ -30,16 +38,18 @@ function change(item: any) {
       {{ $t("Navigation bar") }}
     </el-divider>
     <div class="grid">
-      <div class="item flex" v-for="item in styles" @click="change(item)">
-        <el-icon color="var(--primary-color)" class="icon" :size="20" v-if="themeStore.themeLayout === item.name">
-          <Check/>
-        </el-icon>
-        <div class="left" :style="{ backgroundColor: item.left }"></div>
-        <div class="right">
-          <div class="top" :style="{ backgroundColor: item.top }"></div>
-          <div class="body" :style="{backgroundColor:body}"></div>
+      <template v-for="item in styles">
+        <div class="item flex" @click="change(item)" v-if="!isDark||item.name==='dark'">
+          <el-icon color="var(--primary-color)" class="icon" :size="20" v-if="themeStore.themeLayout === item.name">
+            <Check/>
+          </el-icon>
+          <div class="left" :style="{ backgroundColor: item.left }"></div>
+          <div class="right">
+            <div class="top" :style="{ backgroundColor: item.top }"></div>
+            <div class="body" :style="{backgroundColor:body}"></div>
+          </div>
         </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>

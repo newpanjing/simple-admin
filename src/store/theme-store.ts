@@ -31,7 +31,7 @@ const sidebarTheme = {
         "--sidebar-banner-color":"#FFF",
     }
 }
-export const useTheme = defineStore("theme-store", {
+export const useThemeStore = defineStore("theme-store", {
     state: (): ThemeStates => ({
         primary: primary,
         themeLayout: "default"
@@ -42,10 +42,10 @@ export const useTheme = defineStore("theme-store", {
             setPrimaryColor(color)
         },
         setThemeLayout(layout: string) {
-            console.log(`设置主题${layout}`)
+
             this.themeLayout = layout
             let config=sidebarTheme[layout]
-            console.log(`config:`,config)
+
             for (const key in config) {
                 document.documentElement.style.setProperty(key, config[key])
             }

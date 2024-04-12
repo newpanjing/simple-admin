@@ -5,6 +5,7 @@ const messages = {
     en: {
         zh: "简体中文",
         en: "English",
+        TransitionDesc:"Transition refers to how to make the transition when you click on the menu bar to open different pages, enabling transition animation will get a better visual experience."
     },
     zh
 }

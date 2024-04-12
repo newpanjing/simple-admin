@@ -2,6 +2,19 @@
 import {Close, HomeFilled, User} from "@element-plus/icons-vue";
 
 function logout() {
+  //弹出确认框
+  ElMessageBox.confirm("确认退出登录吗？", "提示", {
+    confirmButtonText: "确认",
+    cancelButtonText: "取消",
+    type: "warning",
+  }).then(() => {
+    ElMessage({
+      type: "success",
+      message: "退出成功",
+    });
+    //TODO 删除用户信息
+    to("/login")
+  });
 }
 
 const userInfo = {
@@ -27,20 +40,20 @@ function to(url: any) {
           <el-icon>
             <HomeFilled/>
           </el-icon>
-          {{ $t('Home')}}
+          {{ $t('Home') }}
         </el-dropdown-item>
         <el-dropdown-item divided @click="to('/profile')">
           <el-icon>
             <User/>
           </el-icon>
-          {{$t('Profile')}}
+          {{ $t('Profile') }}
         </el-dropdown-item>
 
         <el-dropdown-item divided @click="logout">
           <el-icon>
             <Close/>
           </el-icon>
-          {{$t('Logout')}}
+          {{ $t('Logout') }}
         </el-dropdown-item>
       </el-dropdown-menu>
     </template>

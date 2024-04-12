@@ -19,6 +19,7 @@
     "./env.d.ts",
     "./*.d.ts"
   ],
+  "tsx": "preserve",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

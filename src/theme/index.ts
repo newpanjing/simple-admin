@@ -13,9 +13,6 @@ export const getLevel = function (color: string, level: number) {
     let g = parseInt(color.slice(3, 5), 16);
     let b = parseInt(color.slice(5, 7), 16);
 
-    // let rgb = useChangeColor().hexToRgb(color);
-    // for (let i = 0; i < 3; i++) rgb[i] = Math.floor((255 - rgb[i]) * level + rgb[i]);
-    // return useChangeColor().rgbToHex(rgb[0], rgb[1], rgb[2]);
     const mix = (val) => {
         return Math.floor((255 - val) * level + val)
     }
@@ -61,7 +58,7 @@ export const setPrimaryColor = function (color: string) {
     let map = {
         "--el-color-primary": color,
         "--primary-color": color,
-        "--sidebar-active-color": `rgba(${hexToRgb(color).join(',')},0.6)`
+        // "--sidebar-active-color": `rgba(${hexToRgb(color).join(',')},0.6)`
     }
     //其他颜色
     for (let i = 1; i <= 9; i++) {

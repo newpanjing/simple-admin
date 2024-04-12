@@ -2,6 +2,7 @@
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 const { Sunny,Moon } = ElementPlusIconsVue
 import { useDark } from '@vueuse/core'
+import SunnyIcon from "@/components/headers/SunnyIcon.vue";
 const isDark = useDark()
 
 </script>
@@ -9,10 +10,9 @@ const isDark = useDark()
   <el-switch
       v-model="isDark"
       class="mt-2"
-      style="margin-left: 24px"
       inline-prompt
-      :active-icon="Moon"
-      :inactive-icon="Sunny"
+      :active-icon="SunnyIcon"
+      :inactive-icon="Moon"
   />
 </template>
 

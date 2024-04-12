@@ -3,7 +3,7 @@ import {defineStore} from "pinia";
 import type {LocalesStates} from "@/store/interface";
 
 const locale = "zh"
-export const useLocale = defineStore("locale", {
+export const useLocaleStore = defineStore("locale", {
     state: (): LocalesStates => ({
         locale: locale,
     }),

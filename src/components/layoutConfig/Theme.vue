@@ -3,11 +3,11 @@ import ThemeBlock from "@/components/layoutConfig/ThemeBlock.vue";
 import {ref} from "vue";
 
 import colors from "@/theme/colors";
-import {useTheme} from "@/store/theme-store";
+import {useThemeStore} from "@/store/theme-store";
 
 const current = ref(colors[0])
 
-const theme=useTheme()
+const theme=useThemeStore()
 
 function change(color: string) {
   current.value = color
@@ -15,14 +15,13 @@ function change(color: string) {
 }
 
 onMounted(() => {
-  current.value = useTheme().primary
+  current.value = useThemeStore().primary
 })
 </script>
 <template>
   <div class="theme">
     <ThemeBlock v-for="color in colors" :color="color" :active="current==color" @change="change"/>
-      <el-color-picker v-model="current" size="large" @change="change"/>
-
+    <el-color-picker v-model="current" size="large" @change="change"/>
   </div>
 </template>
 <style lang="scss" scoped>

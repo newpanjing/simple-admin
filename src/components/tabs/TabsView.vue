@@ -1,21 +1,33 @@
 <script setup lang="ts">
 
 import {ArrowDown, ArrowLeft, ArrowRight, Close, HomeFilled} from "@element-plus/icons-vue";
+import TabItem from "@/components/tabs/TabItem.vue";
+import {computed, nextTick, onMounted, watch} from "vue";
+import {useTabsStore} from "@/store/tabs-store";
 
-const items = [{
-  text: "首页",
-  active: true,
-}, {text: "监控大屏"},
-  {text: "数据大屏"},
-  {text: "数据大屏"},
-  {text: "数据大屏"},
-  {text: "数据大屏"},
-  {text: "数据大屏"},
-  {text: "数据大屏"},
-  {text: "数据大屏"},
-  {text: "数据大屏"},
-  {text: "数据大屏"},
-]
+const tabsStore = useTabsStore()
+
+const items = computed({
+  get() {
+    return tabsStore.tabs
+  },
+  set(val) {
+    tabsStore.tabs = val
+  }
+})
+
+onMounted(() => {
+  // for (let i = 0; i < 10; i++) {
+  //   items.value.push({
+  //     id: i,
+  //     url: `/list/${i}`,
+  //     text: `${i}数据大屏`,
+  //     closeable: true,
+  //     active: false
+  //   })
+  // }
+})
+
 const scroller = ref<any>(null)
 const tabItems = ref<any>(null)
 const parent = ref<any>(null)
@@ -27,10 +39,11 @@ function getElementsPosition() {
   //获取tabsEl的所有子元素
   let tabs = tabItems.value
   for (let i = 0; i < tabs.length; i++) {
-    let x = tabs[i].offsetLeft - parentX;
+    let el = tabs[i].getEl()
+    let x = el.offsetLeft - parentX;
     pos.push({
       x,
-      w: tabs[i].offsetWidth,
+      w: el.offsetWidth,
     });
   }
   return pos;
@@ -72,6 +85,7 @@ function next() {
 let mouseDownFlag = false;
 let startX = 0;
 let startScrollLeft = 0;
+
 function mouseDown(e: any) {
   //获取当前滚动条的位置
   startX = e.clientX;
@@ -81,11 +95,9 @@ function mouseDown(e: any) {
 
 function mouseMove(e: any) {
   //获取当前滚动条的位置
-  if(mouseDownFlag){
-    let val=e.clientX-startX
-    scroller.value.scrollLeft=startScrollLeft-val
-    console.log("move",e.clientX-startX)
-
+  if (mouseDownFlag) {
+    let val = e.clientX - startX
+    scroller.value.scrollLeft = startScrollLeft - val
   }
 }
 
@@ -95,7 +107,86 @@ function mouseUp(e: any) {
   mouseDownFlag = false;
 }
 
+function getRightItems(index: number) {
+  let arr = []
+  for (let i = index - 1; i < items.value.length; i++) {
+    if (items.value[i].closeable) {
+      arr.push(items.value[i])
+    }
+  }
+  return arr
+}
 
+function getLeftItems(index: number) {
+  let arr = []
+  for (let i = index + 1; i >= 0; i--) {
+    if (items.value[i].closeable) {
+      arr.push(items.value[i])
+    }
+  }
+  return arr
+}
+
+function onClose(item: any) {
+  //移除当前的item，然后找到一个最近的item
+  //寻找上一个或者下一个closeable不为false的item
+  let index = items.value.findIndex(e => e.id === item.id)
+  let rights = getRightItems(index)
+  let nearNode = null
+  if (rights.length > 0) {
+    nearNode = rights[0]
+  } else {
+    let lefts = getLeftItems(index)
+    if (lefts.length > 0) {
+      nearNode = lefts[lefts.length - 1]
+    }
+  }
+  console.log(rights, nearNode)
+
+  //移除当前的item
+  items.value = items.value.filter(e => e.id !== item.id)
+
+  if (nearNode != null) {
+    onSelected(nearNode)
+  }
+
+}
+
+const router = useRouter()
+
+function onSelected(item: any) {
+  //遍历items，将active置为false
+  items.value.forEach(e => e.active = e.id === item.id)
+  //路由
+  router.push(item.url)
+}
+
+//刷新
+function refresh() {
+  //刷新当前页面
+  router.go(0)
+}
+
+function closeAll(){
+  //删除所有不为closeable的item
+  items.value = items.value.filter(e => !e.closeable)
+  onSelected(items.value[0])
+}
+
+watch(tabsStore.tabs, (val) => {
+  //找到val中active的
+  nextTick(()=>{
+    for(let i=0;i<val.length;i++){
+      if(val[i].active){
+      console.log(val[i].text)
+        onSelected(val[i])
+        break
+      }
+    }
+  })
+},{
+  deep:true
+})
 </script>
 
 <template>
@@ -105,16 +196,15 @@ function mouseUp(e: any) {
     </div>
     <div class="tabs-scroll" ref="scroller" @mousedown.left="mouseDown" @mousemove="mouseMove" @mouseup.left="mouseUp">
       <div class="tabs" ref="parent">
-        <div :class="{tab:true,active:item.active}" v-for="(item,i) in items" ref="tabItems">
-        <span class="name">
-          {{ i }}-{{ item.text }}
-        </span>
-          <span class="close">
-        <el-icon>
-          <Close/>
-        </el-icon>
-        </span>
-        </div>
+        <TabItem
+            v-for="(item,i) in items"
+            :key="i"
+            :item="item"
+            @close="onClose"
+            @selected="onSelected"
+            ref="tabItems">
+
+        </TabItem>
       </div>
     </div>
     <div class="next">
@@ -127,10 +217,10 @@ function mouseUp(e: any) {
     </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>刷新当前</el-dropdown-item>
+            <el-dropdown-item @click="refresh">刷新当前</el-dropdown-item>
             <el-dropdown-item divided>关闭当前</el-dropdown-item>
             <el-dropdown-item>关闭其他</el-dropdown-item>
-            <el-dropdown-item>全部关闭</el-dropdown-item>
+            <el-dropdown-item @click="closeAll">全部关闭</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -141,7 +231,7 @@ function mouseUp(e: any) {
 
 <style lang="scss">
 :root {
-  --tabs-bg: #fff;
+  --tabs-bg: #f2f2f2;
   --tabs-item-bg: #fff;
   --tabs-item-bg-hover: #ededed;
 
@@ -170,9 +260,9 @@ function mouseUp(e: any) {
   }
 
   .tabs-scroll {
-    //overflow-x: hidden;
     white-space: nowrap;
     overflow: hidden;
+    flex: 1;
 
     .tabs {
       flex: 1;

@@ -4,6 +4,7 @@ import {Document, Link} from "@element-plus/icons-vue";
 import {computed} from "vue";
 import type {MenuType} from "@/types";
 import {useStorage} from "@vueuse/core";
+import {useTabsStore} from "@/store/tabs-store";
 
 const props = defineProps({
   menu: {
@@ -18,14 +19,21 @@ const hasItemChild = (item: any) => {
 const router = useRouter()
 
 const emit = defineEmits(['open'])
-
+const tabs = useTabsStore()
 const open = () => {
   let menu = props.menu as MenuType
   //判断是内部还是外部
   if(menu.external){
-    window.open(menu.link)
+    window.open(menu.url)
   }else{
-    router.push(menu.link)
+    // router.push(menu.url)
+    tabs.pushTab({
+      id: menu.id,
+      text: menu.text,
+      closeable: true,
+      url: menu.url,
+      active: true
+    })
   }
 }
 

@@ -76,6 +76,7 @@ declare module 'vue' {
     SwitchDarkMode: typeof import('./src/components/headers/SwitchDarkMode.vue')['default']
     SwitchLanguage: typeof import('./src/components/headers/SwitchLanguage.vue')['default']
     Tab: typeof import('./src/components/tabs/Tab.vue')['default']
+    TabItem: typeof import('./src/components/tabs/TabItem.vue')['default']
     Tabs: typeof import('./src/components/tabs/Tabs.vue')['default']
     TabsView: typeof import('./src/components/tabs/TabsView.vue')['default']
     Theme: typeof import('./src/components/layoutConfig/Theme.vue')['default']

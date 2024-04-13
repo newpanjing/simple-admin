@@ -31,7 +31,7 @@ const breadcrumb = computed(() => {
     <div class="left">
       <!-- 面包屑 -->
       <el-breadcrumb :separator-icon="ArrowRight" v-if="breadcrumb">
-        <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/' }">homepage1</el-breadcrumb-item>
         <el-breadcrumb-item>promotion management</el-breadcrumb-item>
       </el-breadcrumb>
     </div>

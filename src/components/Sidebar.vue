@@ -16,11 +16,11 @@ const menus = ref<any>([{
     {
       id: 2,
       text: '监控大屏1',
-      link: '/scene/111',
+      url: '/scene/111',
     }, {
       id: 3,
       text: '外部大屏',
-      link: '/scene/2222',
+      url: '/scene/2222',
       //是否为外链
       external: true,
     }]
@@ -33,39 +33,39 @@ const menus = ref<any>([{
       children: [{
         id: 4011,
         text: '用户列表',
-        link: '/list/aaa',
+        url: '/list/aaa',
       }, {
         id: 4012,
         text: '用户详情',
-        link: '/list/detail',
+        url: '/list/detail',
       }]
     }, {
       id: 402,
       text: '角色管理',
-      link: '/role/list',
+      url: '/role/list',
     }, {
       id: 403,
       text: '权限管理',
-      link: '/permission/list',
+      url: '/permission/list',
     }, {
       id: 404,
       text: '菜单管理',
-      link: '/menu/list',
+      url: '/menu/list',
     }, {
       id: 405,
       text: '部门管理',
-      link: '/department/list',
+      url: '/department/list',
     }, {
       id: 406,
       text: '字典管理',
-      link: '/dictionary/list',
+      url: '/dictionary/list',
     }, {
       id: 407,
       text: '系统日志',
-      link: '/log/list',
+      url: '/log/list',
     }]
   },
-  {id: 408, text: "社区首页", link: '/community/list', external: true}
+  {id: 408, text: "社区首页", url: '/community/list', external: true}
 ])
 //折叠展开
 const collapse = useStorage("collapse", false)
@@ -74,12 +74,12 @@ const collapse = useStorage("collapse", false)
 
 <template>
   <div :class="{sidebar:true,collapse:collapse}">
-    <router-link to="/">
+    <router-url to="/">
       <div class="banner">
           <img src="../assets/logo.svg" alt="logo" class="logo">
           <h3 class="mb-2 title">Admin Pro</h3>
       </div>
-    </router-link>
+    </router-url>
     <el-menu
         active-text-color="var(--sidebar-text-active-color)"
         text-color="var(--sidebar-text-color)"
@@ -98,7 +98,7 @@ const collapse = useStorage("collapse", false)
 </template>
 
 <style lang="scss">
-.router-link-active{
+.router-url-active{
   //不显示下划线
   text-decoration: none;
 }

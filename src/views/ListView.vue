@@ -31,8 +31,8 @@ function onResize() {
 }
 watch(()=>route.path,(val)=>{
   //路由变动，更新数据
-  console.log("路由变了")
-  ElMessage.success(`路由变了${val}`)
+  console.log(`路由变了${val}`)
+  // ElMessage.success(`路由变了${val}`)
 })
 </script>
 

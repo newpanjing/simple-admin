@@ -8,8 +8,9 @@ import {computed} from "vue";
 useHead({
   title: 'Page not found'
 })
+const route = useRoute()
 const title = computed(() => {
-  return "Not found: " + useRoute().path
+  return "Not found: " + route.path
 })
 </script>
 

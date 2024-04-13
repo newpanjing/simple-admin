@@ -24,3 +24,17 @@ export interface TransitionStates{
     setType: (type: string) => void
 }
 
+//tab
+export interface Tab{
+    id: number
+    closeable: boolean
+    active: boolean
+    url: string
+    text: string
+}
+export interface TabsStates{
+    tabs: Array<Tab>
+    setTabs: (tabs: Array<Tab>) => void
+    pushTab: (tab: Tab) => void
+}
+

@@ -2,7 +2,7 @@
 
 import Sidebar from "@/components/Sidebar.vue";
 import LayoutHeader from "@/components/LayoutHeader.vue";
-import {onMounted} from "vue";
+import {computed, onMounted} from "vue";
 import TabsView from "@/components/tabs/TabsView.vue";
 import {useThemeStore} from "@/store/theme-store";
 const show=ref(false);
@@ -15,6 +15,9 @@ onMounted(()=>{
 })
 
 const themeStore=useThemeStore();
+const showTabs=computed(()=>{
+  return themeStore.tabs;
+})
 </script>
 <template>
   <div class="layout" v-cloak v-show="show">
@@ -26,9 +29,7 @@ const themeStore=useThemeStore();
         <el-header class="header">
           <LayoutHeader/>
         </el-header>
-        <transition name="fade">
-          <TabsView v-if="themeStore.tabs"/>
-        </transition>
+        <TabsView v-if="showTabs"/>
         <el-main class="main">
           <slot></slot>
         </el-main>

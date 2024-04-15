@@ -80,4 +80,7 @@ declare module 'vue' {
     ThemeBlock: typeof import('./src/components/layoutConfig/ThemeBlock.vue')['default']
     UserInfo: typeof import('./src/components/headers/UserInfo.vue')['default']
   }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
+  }
 }

@@ -13,6 +13,8 @@ const router = useRouter()
 
 import {t} from "@/messages/i18n";
 import {computed, reactive} from "vue";
+import {Loading} from "@element-plus/icons-vue";
+import {l} from "vite/dist/node/types.d-FdqQ54oU";
 
 const formRef = ref(null)
 
@@ -34,13 +36,18 @@ const rules = computed(()=>{
     }]
   }
 })
-
+const isLoading=ref(false)
 const submit = () => {
   formRef.value?.validate(valid => {
     console.log('valid', valid)
+    if (valid) {
+      isLoading.value=true
+      setTimeout(()=>{
+        isLoading.value=false
+        router.push("/")
+      },2000)
+    }
   })
-  // TODO: 登录
-  // router.push("/")
 }
 </script>
 
@@ -71,7 +78,12 @@ const submit = () => {
             <el-checkbox v-model="rememberMe">{{ $t('Remember me') }}</el-checkbox>
           </el-form-item>
           <div class="flex btn">
-            <el-button type="primary" @click="submit">{{ $t('Sign in') }}</el-button>
+            <el-button type="primary" @click="submit" :disabled="isLoading">
+              <el-icon class="is-loading" v-if="isLoading">
+                <Loading/>
+              </el-icon>
+              <span v-else>{{ $t('Sign in') }}</span>
+            </el-button>
           </div>
         </el-form>
 

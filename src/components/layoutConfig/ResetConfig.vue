@@ -12,7 +12,7 @@ function reset() {
   collapse.value=false
   themeStore.reset()
   tabsStore.reset()
-  ElMessage.success("重置成功");
+  ElMessage.success("Reset config success.");
 }
 </script>
 

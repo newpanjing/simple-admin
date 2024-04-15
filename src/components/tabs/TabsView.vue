@@ -223,7 +223,7 @@ function closeAll() {
 
 <style lang="scss">
 :root {
-  --tabs-bg: #f2f2f2;
+  --tabs-bg: #f5f5f5;
   --tabs-item-bg: #fff;
   --tabs-item-bg-hover: #ededed;
 
@@ -245,7 +245,7 @@ function closeAll() {
   background-color: var(--tabs-bg);
   padding: 0 10px;
   gap: 5px;
-
+  //border-bottom: 1px solid #eee;
   .prev, .next, .arrow-down {
     display: flex;
     align-items: center;

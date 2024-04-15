@@ -33,4 +33,13 @@ export default{
     "Open": "打开",
     "Close": "关闭",
     Reset: "重置",
+    Username: "用户名",
+    Password: "密码",
+    "Remember me": "记住我",
+    Login: "登录",
+    "Sign in": "登录",
+    "Language": "语言",
+    "Not a member? Please contact the administrator": "还不是会员？请联系管理员",
+    "Sign in to your account": "登录到您的账户",
+
 }

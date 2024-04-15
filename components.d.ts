@@ -50,6 +50,8 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTableV2: typeof import('element-plus/es')['ElTableV2']
+    Eye: typeof import('./src/components/login/Eye.vue')['default']
+    EyeIcon: typeof import('./src/components/login/EyeIcon.vue')['default']
     FromDialog: typeof import('./src/components/list/FromDialog.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']

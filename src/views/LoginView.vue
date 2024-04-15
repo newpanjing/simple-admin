@@ -1,14 +1,21 @@
 <script setup lang="ts">
-import {ElMessage} from "element-plus";
 import SwitchLanguage from "@/components/headers/SwitchLanguage.vue";
 import SwitchDarkMode from "@/components/headers/SwitchDarkMode.vue";
+import {useStorage} from "@vueuse/core";
 
-function msg() {
-  ElMessage.success("成功")
-}
 
 const username = ref("");
 const password = ref("");
+
+const rememberMe = useStorage("rememberMe",false)
+const router=useRouter()
+
+const submit = () => {
+  console.log(username.value, password.value)
+  // TODO: 登录
+  router.push("/")
+}
+
 </script>
 
 <template>
@@ -17,28 +24,30 @@ const password = ref("");
       <div class="logo">
         <img src="../assets/logo.svg" alt="">
       </div>
-      <div class="title">Sign in to your account</div>
+      <div class="title">{{$t('Sign in to your account')}}</div>
       <el-card class="card">
 
         <el-form label-position="top">
-          <el-form-item label="Username">
+          <el-form-item :label="$t('Username')">
             <el-input v-model="username" clearable></el-input>
           </el-form-item>
-          <el-form-item label="Password">
-            <el-input v-model="password" clearable></el-input>
+          <el-form-item :label="$t('Password')">
+            <el-input v-model="password" clearable type="password" show-password>
+
+            </el-input>
           </el-form-item>
           <el-form-item>
-            <el-checkbox>Remember me</el-checkbox>
+            <el-checkbox v-model="rememberMe">{{$t('Remember me')}}</el-checkbox>
           </el-form-item>
           <div class="flex btn">
-            <el-button type="primary" @click="msg">Sign in</el-button>
+            <el-button type="primary" @click="submit">{{$t('Sign in')}}</el-button>
           </div>
         </el-form>
 
         <el-divider/>
         <div class="flex justify-between action">
           <div class="flex">
-            Language:
+            {{$t('Language')}}:
             <SwitchLanguage/>
           </div>
           <SwitchDarkMode/>
@@ -46,7 +55,7 @@ const password = ref("");
 
       </el-card>
       <div class="tips">
-        Not a member? Please contact the administrator
+        {{$t('Not a member? Please contact the administrator')}}
       </div>
     </div>
   </div>
@@ -75,7 +84,7 @@ body {
       color: var(--el-text-color-primary);
       line-height: 2.25rem;
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
     }
   }
 

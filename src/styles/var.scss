@@ -19,9 +19,12 @@
   --component-bg:#f5f5f5;
 
   --panel-bg:#fff;
+
+  ---login-bg:#f9fafb;
 }
 :root.dark{
 
   --component-bg:#292a2a;
   --panel-bg:#242525;
+  ---login-bg:var(--component-bg);
 }

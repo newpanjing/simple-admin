@@ -1,9 +1,8 @@
 import {defineStore} from "pinia";
 import type {Tab, TabsStates, TransitionStates} from "@/store/interface";
-import {useRouter} from "vue-router";
-const router=useRouter()
 
 export const useTabsStore = defineStore("tabs", {
+
     state: (): TabsStates => ({
         tabs: [{
             id: -1,
@@ -12,8 +11,12 @@ export const useTabsStore = defineStore("tabs", {
             closeable: false,
             active: true
         }],
+        defaultActive:"2"
     }),
     actions: {
+        setDefaultActive(id: string) {
+            this.defaultActive = id
+        },
         setTabs(tabs: Array<Tab>) {
             this.tabs = tabs
         },
@@ -25,17 +28,19 @@ export const useTabsStore = defineStore("tabs", {
                     item.active = false
                 })
                 t.active = true
-                return
+            }else{
+                //将其他tab的active状态设置为false
+                this.tabs.forEach(item => {
+                    item.active = false
+                })
+                tab.active = true
+                this.tabs.push(tab)
             }
-            //将其他tab的active状态设置为false
-            this.tabs.forEach(item => {
-                item.active = false
-            })
-            tab.active = true
-            this.tabs.push(tab)
+            //导航
+           this.$router.push(tab.url)
+            this.defaultActive = tab.id.toString()
         },
     },
-    router:useRouter(),
     persist: {
         enabled: true,
         strategies: [

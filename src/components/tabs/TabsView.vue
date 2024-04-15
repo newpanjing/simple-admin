@@ -167,25 +167,16 @@ function refresh() {
   router.go(0)
 }
 
-function closeAll(){
+function closeAll() {
   //删除所有不为closeable的item
   items.value = items.value.filter(e => !e.closeable)
   onSelected(items.value[0])
 }
 
 watch(tabsStore.tabs, (val) => {
-  //找到val中active的
-  nextTick(()=>{
-    for(let i=0;i<val.length;i++){
-      if(val[i].active){
-      console.log(val[i].text)
-        onSelected(val[i])
-        break
-      }
-    }
-  })
-},{
-  deep:true
+  console.log("tabsStore.tabs changed")
+}, {
+  deep: true
 })
 </script>
 

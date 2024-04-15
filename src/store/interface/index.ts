@@ -36,5 +36,9 @@ export interface TabsStates{
     tabs: Array<Tab>
     setTabs: (tabs: Array<Tab>) => void
     pushTab: (tab: Tab) => void
+
+    //sidebar激活的menu-item
+    defaultActive: string
+    setDefaultActive: (active: string) => void
 }
 

@@ -27,6 +27,9 @@ app.use(head)
 
 app.use(ElementPlus)
 const pinia = createPinia()
+pinia.use(({store})=>{
+    store.$router = router
+})
 pinia.use(piniaPersist)
 
 app.use(pinia)

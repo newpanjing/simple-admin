@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 
 import SubMenu from "@/components/sidebar/SubMenu.vue"
+import {computed} from "vue";
+import {useTabsStore} from "@/store/tabs-store";
 
 const handleOpen = (key: string, keyPath: string[]) => {
   // console.log(key, keyPath)
@@ -14,11 +16,16 @@ const menus = ref<any>([{
   text: 'Dashboard',
   children: [
     {
-      id: 2,
+      id:2,
+      text: '主控台',
+      url: '/',
+    },
+    {
+      id: 201,
       text: '监控大屏1',
       url: '/scene/111',
     }, {
-      id: 3,
+      id: 301,
       text: '外部大屏',
       url: '/scene/2222',
       //是否为外链
@@ -69,22 +76,26 @@ const menus = ref<any>([{
 ])
 //折叠展开
 const collapse = useStorage("collapse", false)
+const router = useRouter()
+function push(url: string) {
+  router.push(url)
+}
+const tabsStore = useTabsStore()
+
 
 </script>
 
 <template>
   <div :class="{sidebar:true,collapse:collapse}">
-    <router-url to="/">
-      <div class="banner">
-          <img src="../assets/logo.svg" alt="logo" class="logo">
-          <h3 class="mb-2 title">Admin Pro</h3>
-      </div>
-    </router-url>
+    <div class="banner" @click="push('/')">
+        <img src="../assets/logo.svg" alt="logo" class="logo">
+        <h3 class="title">Admin Pro</h3>
+    </div>
     <el-menu
         active-text-color="var(--sidebar-text-active-color)"
         text-color="var(--sidebar-text-color)"
         background-color="var(--sidebar-bg-color)"
-        default-active="2"
+        :default-active="tabsStore.defaultActive"
         class="menu"
         :show-timeout="300"
         :hide-timeout="100"
@@ -146,7 +157,7 @@ const collapse = useStorage("collapse", false)
     align-items: center;
     gap: 10px;
     height: 65px;
-
+    cursor: pointer;
     img {
       max-width: 30px;
       max-height: 30px;

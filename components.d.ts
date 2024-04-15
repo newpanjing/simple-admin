@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Animation: typeof import('./src/components/layoutConfig/Animation.vue')['default']
+    Breadcrumb: typeof import('./src/components/headers/Breadcrumb.vue')['default']
     DataAction: typeof import('./src/components/list/DataAction.vue')['default']
     DataAlert: typeof import('./src/components/list/DataAlert.vue')['default']
     DataPagination: typeof import('./src/components/list/DataPagination.vue')['default']

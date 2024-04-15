@@ -5,13 +5,13 @@ export const useTabsStore = defineStore("tabs", {
 
     state: (): TabsStates => ({
         tabs: [{
-            id: -1,
+            id: 2,
             url: "/",
             text: "主控台",
             closeable: false,
             active: true
         }],
-        defaultActive:"2"
+        defaultActive:"2",
     }),
     actions: {
         setDefaultActive(id: string) {
@@ -21,6 +21,15 @@ export const useTabsStore = defineStore("tabs", {
             this.tabs = tabs
         },
         pushTab(tab: Tab) {
+
+            //默认值
+            if(typeof tab.closeable=="undefined"){
+                tab.closeable=true
+            }
+            if(typeof tab.active=="undefined"){
+                tab.active=true
+            }
+
             //如果tab已经存在，则将其他tab的active状态设置为false
             let t=this.tabs.find(item => item.id === tab.id)
             if (t) {

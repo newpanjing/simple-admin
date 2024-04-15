@@ -8,6 +8,7 @@ import {ArrowRight, Expand, Fold, Refresh} from "@element-plus/icons-vue";
 import SettingButton from "@/components/headers/SettingButton.vue";
 import {useThemeStore} from "@/store/theme-store";
 import {computed} from "vue";
+import Breadcrumb from "@/components/headers/Breadcrumb.vue";
 
 const collapse = useStorage("collapse", false)
 const toggleCollapse = () => {
@@ -15,9 +16,11 @@ const toggleCollapse = () => {
 }
 const themeStore = useThemeStore()
 //是否启用面包屑
-const breadcrumb = computed(() => {
+const hasBreadcrumb = computed(() => {
   return themeStore.breadcrumb
 })
+//找到当前的路由对应的sidebar菜单
+
 </script>
 
 <template>
@@ -30,10 +33,7 @@ const breadcrumb = computed(() => {
     </el-button>
     <div class="left">
       <!-- 面包屑 -->
-      <el-breadcrumb :separator-icon="ArrowRight" v-if="breadcrumb">
-        <el-breadcrumb-item :to="{ path: '/' }">homepage1</el-breadcrumb-item>
-        <el-breadcrumb-item>promotion management</el-breadcrumb-item>
-      </el-breadcrumb>
+      <Breadcrumb v-if="hasBreadcrumb"/>
     </div>
     <div class="space"></div>
     <div class="right">

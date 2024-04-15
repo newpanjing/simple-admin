@@ -3,6 +3,7 @@
 import SubMenu from "@/components/sidebar/SubMenu.vue"
 import {computed} from "vue";
 import {useTabsStore} from "@/store/tabs-store";
+import {useStorage} from "@vueuse/core";
 
 const handleOpen = (key: string, keyPath: string[]) => {
   // console.log(key, keyPath)
@@ -10,8 +11,7 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   // console.log(key, keyPath)
 }
-
-const menus = ref<any>([{
+const menus=useStorage("menus",[{
   id: 1,
   text: 'Dashboard',
   children: [

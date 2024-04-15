@@ -2,10 +2,7 @@
 import { onMounted } from 'vue';
 import { useStorage } from '@vueuse/core';
 
-const welcome= useStorage('welcome', true)
-onMounted(()=>{
-  welcome.value = false
-})
+
 
 import { ElMessage } from 'element-plus'
 
@@ -23,14 +20,12 @@ function showDialog() {
   ElMessage.warning({
     message: 'Welcome to Your Vue.js App',
   })
-  console.log('welcome', welcome.value)
 }
 
 </script>
 
 <template>
   <div style="height: 2000px">111
-    {{ welcome }}
     <div>
       <el-link type="primary" @click="showDialog"> click me</el-link>
 

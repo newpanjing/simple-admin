@@ -16,18 +16,6 @@ const items = computed({
   }
 })
 
-onMounted(() => {
-  // for (let i = 0; i < 10; i++) {
-  //   items.value.push({
-  //     id: i,
-  //     url: `/list/${i}`,
-  //     text: `${i}数据大屏`,
-  //     closeable: true,
-  //     active: false
-  //   })
-  // }
-})
-
 const scroller = ref<any>(null)
 const tabItems = ref<any>(null)
 const parent = ref<any>(null)
@@ -159,6 +147,7 @@ function onSelected(item: any) {
   items.value.forEach(e => e.active = e.id === item.id)
   //路由
   router.push(item.url)
+  tabsStore.defaultActive = item.id.toString()
 }
 
 //刷新
@@ -173,11 +162,6 @@ function closeAll() {
   onSelected(items.value[0])
 }
 
-watch(tabsStore.tabs, (val) => {
-  console.log("tabsStore.tabs changed")
-}, {
-  deep: true
-})
 </script>
 
 <template>

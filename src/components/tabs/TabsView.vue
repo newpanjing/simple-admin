@@ -2,7 +2,7 @@
 
 import {ArrowDown, ArrowLeft, ArrowRight, Close, HomeFilled} from "@element-plus/icons-vue";
 import TabItem from "@/components/tabs/TabItem.vue";
-import {computed, nextTick, onMounted, watch} from "vue";
+import {computed, nextTick, onMounted, onUnmounted, watch} from "vue";
 import {useTabsStore} from "@/store/tabs-store";
 
 const tabsStore = useTabsStore()
@@ -129,14 +129,16 @@ function onClose(item: any) {
       nearNode = lefts[lefts.length - 1]
     }
   }
-  console.log(rights, nearNode)
 
   //移除当前的item
   items.value = items.value.filter(e => e.id !== item.id)
 
-  if (nearNode != null) {
+  if (items.value.length === 1) {
+    onSelected(items.value[0])
+  } else if (nearNode != null) {
     onSelected(nearNode)
   }
+
 
 }
 
@@ -150,10 +152,25 @@ function onSelected(item: any) {
   tabsStore.defaultActive = item.id.toString()
 }
 
+function closeCurrent() {
+  //找到激活的
+  let activeItem = items.value.find(e => e.active)
+  if (activeItem != null) {
+    //删除当前激活的
+    onClose(activeItem)
+  }
+}
+
 //刷新
 function refresh() {
   //刷新当前页面
   router.go(0)
+}
+
+function closeOther() {
+  //删除所有不为closeable的item
+  //只保留closeable为true和active为false的
+  items.value = items.value.filter(e => !(e.closeable && !e.active))
 }
 
 function closeAll() {
@@ -192,10 +209,10 @@ function closeAll() {
     </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item @click="refresh">刷新当前</el-dropdown-item>
-            <el-dropdown-item divided>关闭当前</el-dropdown-item>
-            <el-dropdown-item>关闭其他</el-dropdown-item>
-            <el-dropdown-item @click="closeAll">全部关闭</el-dropdown-item>
+            <el-dropdown-item @click="refresh">{{ $t('Refresh') }}</el-dropdown-item>
+            <el-dropdown-item divided @click="closeCurrent">{{ $t('Close current') }}</el-dropdown-item>
+            <el-dropdown-item @click="closeOther">{{ $t('Close other') }}</el-dropdown-item>
+            <el-dropdown-item @click="closeAll">{{ $t('Close all') }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>

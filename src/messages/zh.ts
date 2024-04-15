@@ -22,5 +22,14 @@ export default{
     "Zoom":"缩放",
     "Fade":"淡入淡出",
     "SlideBottom":"下方滑出",
-    "Tabs":"标签栏"
+    "Tabs":"标签栏",
+    "Close current": "关闭当前",
+    "Close other": "关闭其他",
+    "Close all": "关闭全部",
+    "Refresh": "刷新",
+    "Full screen": "全屏",
+    "Exit full screen": "退出全屏",
+    "Open full screen": "打开全屏",
+    "Open": "打开",
+    "Close": "关闭",
 }

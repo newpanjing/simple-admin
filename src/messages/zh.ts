@@ -41,5 +41,7 @@ export default{
     "Language": "语言",
     "Not a member? Please contact the administrator": "还不是会员？请联系管理员",
     "Sign in to your account": "登录到您的账户",
+    "Username is required": "用户名不能为空",
+    "Password is required": "密码不能为空"
 
 }

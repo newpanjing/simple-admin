@@ -7,15 +7,41 @@ import {useStorage} from "@vueuse/core";
 const username = ref("");
 const password = ref("");
 
-const rememberMe = useStorage("rememberMe",false)
-const router=useRouter()
+const rememberMe = useStorage("rememberMe", false)
+const router = useRouter()
+
+
+import {t} from "@/messages/i18n";
+import {computed, reactive} from "vue";
+
+const formRef = ref(null)
+
+const form = reactive({
+  username: "",
+  password: "",
+});
+const rules = computed(()=>{
+  return {
+    username: [{
+      required: true,
+      message: t('Username is required'),
+      trigger: 'change'
+    }],
+    password: [{
+      required: true,
+      message: t('Password is required'),
+      trigger: 'change'
+    }]
+  }
+})
 
 const submit = () => {
-  console.log(username.value, password.value)
+  formRef.value?.validate(valid => {
+    console.log('valid', valid)
+  })
   // TODO: 登录
-  router.push("/")
+  // router.push("/")
 }
-
 </script>
 
 <template>
@@ -24,30 +50,35 @@ const submit = () => {
       <div class="logo">
         <img src="../assets/logo.svg" alt="">
       </div>
-      <div class="title">{{$t('Sign in to your account')}}</div>
+      <div class="title">{{ $t('Sign in to your account') }}</div>
       <el-card class="card">
 
-        <el-form label-position="top">
-          <el-form-item :label="$t('Username')">
-            <el-input v-model="username" clearable></el-input>
+        <el-form
+            ref="formRef"
+            label-position="top"
+            :rules="rules"
+            status-icon
+            :model="form">
+          <el-form-item :label="$t('Username')" prop="username">
+            <el-input v-model="form.username" clearable></el-input>
           </el-form-item>
-          <el-form-item :label="$t('Password')">
-            <el-input v-model="password" clearable type="password" show-password>
+          <el-form-item :label="$t('Password')" prop="password">
+            <el-input v-model="form.password" clearable type="password" show-password>
 
             </el-input>
           </el-form-item>
           <el-form-item>
-            <el-checkbox v-model="rememberMe">{{$t('Remember me')}}</el-checkbox>
+            <el-checkbox v-model="rememberMe">{{ $t('Remember me') }}</el-checkbox>
           </el-form-item>
           <div class="flex btn">
-            <el-button type="primary" @click="submit">{{$t('Sign in')}}</el-button>
+            <el-button type="primary" @click="submit">{{ $t('Sign in') }}</el-button>
           </div>
         </el-form>
 
         <el-divider/>
         <div class="flex justify-between action">
           <div class="flex">
-            {{$t('Language')}}:
+            {{ $t('Language') }}:
             <SwitchLanguage/>
           </div>
           <SwitchDarkMode/>
@@ -55,7 +86,7 @@ const submit = () => {
 
       </el-card>
       <div class="tips">
-        {{$t('Not a member? Please contact the administrator')}}
+        {{ $t('Not a member? Please contact the administrator') }}
       </div>
     </div>
   </div>
@@ -80,7 +111,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .title{
+
+    .title {
       color: var(--el-text-color-primary);
       line-height: 2.25rem;
       font-weight: 700;
@@ -104,10 +136,12 @@ body {
     min-width: 50px;
     min-height: 50px;
   }
-  .tips{
+
+  .tips {
     color: var(--el-text-color-secondary);
   }
-  .action{
+
+  .action {
     width: 100%;
   }
 }

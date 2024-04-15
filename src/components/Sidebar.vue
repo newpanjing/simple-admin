@@ -97,8 +97,7 @@ const tabsStore = useTabsStore()
         background-color="var(--sidebar-bg-color)"
         :default-active="tabsStore.defaultActive"
         class="menu"
-        :show-timeout="300"
-        :hide-timeout="100"
+
         :collapse="collapse"
         @open="handleOpen"
         @close="handleClose">
@@ -113,7 +112,7 @@ const tabsStore = useTabsStore()
   //不显示下划线
   text-decoration: none;
 }
-.sidebar {
+.sidebar:not(.el-menu--collapse) {
   display: flex;
   flex-direction: column;
   background-color: var(--sidebar-bg-color);
@@ -173,9 +172,8 @@ const tabsStore = useTabsStore()
   }
 }
 
-.collapse {
+.collapse:not(.el-menu--collapse) {
   width: auto;
-
   .banner {
     padding: 5px;
     justify-content: center;

@@ -59,6 +59,13 @@ export const useThemeStore = defineStore("theme-store", {
         },
         setTabs(state: boolean) {
             this.tabs = state
+        },
+        reset() {
+            this.setPrimary(primary)
+            this.setThemeLayout("default")
+
+            this.breadcrumb = true
+            this.tabs = true
         }
     },
     persist: {

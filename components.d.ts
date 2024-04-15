@@ -59,6 +59,7 @@ declare module 'vue' {
     LayoutConfig: typeof import('./src/components/layoutConfig/LayoutConfig.vue')['default']
     LayoutHeader: typeof import('./src/components/LayoutHeader.vue')['default']
     PageTransition: typeof import('./src/components/layoutConfig/PageTransition.vue')['default']
+    ResetConfig: typeof import('./src/components/layoutConfig/ResetConfig.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchForm: typeof import('./src/components/list/SearchForm.vue')['default']

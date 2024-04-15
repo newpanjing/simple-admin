@@ -1,6 +1,7 @@
 import {defineStore} from "pinia";
 import type {Tab, TabsStates, TransitionStates} from "@/store/interface";
 
+
 export const useTabsStore = defineStore("tabs", {
 
     state: (): TabsStates => ({
@@ -49,6 +50,17 @@ export const useTabsStore = defineStore("tabs", {
            this.$router.push(tab.url)
             this.defaultActive = tab.id.toString()
         },
+        reset(){
+           this.tabs= [{
+                id: 2,
+                url: "/",
+                text: "主控台",
+                closeable: false,
+                active: true
+            }]
+            this.defaultActive="2"
+            this.$router.push('/')
+        }
     },
     persist: {
         enabled: true,

@@ -6,6 +6,7 @@ import SwitchDarkMode from "@/components/headers/SwitchDarkMode.vue";
 import {useDark} from "@vueuse/core";
 import PageTransition from "@/components/layoutConfig/PageTransition.vue";
 import DisplayConfig from "@/components/layoutConfig/DisplayConfig.vue";
+import ResetConfig from "@/components/layoutConfig/ResetConfig.vue";
 
 const emit = defineEmits(["close"]);
 const isDark = useDark()
@@ -34,6 +35,7 @@ const isDark = useDark()
 
     <DisplayConfig/>
     <PageTransition/>
+    <ResetConfig/>
   </div>
 </template>
 

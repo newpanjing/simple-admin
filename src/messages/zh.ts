@@ -32,4 +32,5 @@ export default{
     "Open full screen": "打开全屏",
     "Open": "打开",
     "Close": "关闭",
+    Reset: "重置",
 }

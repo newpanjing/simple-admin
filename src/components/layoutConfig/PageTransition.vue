@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import {t} from "@/messages/i18n";
 import {useTransitionStore} from "@/store/transition-store";
+import {computed} from "vue";
 
 
-const options = [
+const options = computed(()=>[
   {
     label: t("Fade"),
     value: "fade"
@@ -22,7 +23,7 @@ const options = [
     label: t("Rotate"),
     value: "rotate"
   }
-]
+])
 
 
 const store = useTransitionStore()

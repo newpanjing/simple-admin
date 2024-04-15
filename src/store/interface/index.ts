@@ -9,6 +9,7 @@ export interface ThemeStates {
     //标签栏
     tabs: boolean
     setTabs: (state: boolean) => void
+    reset: () => void
 }
 
 
@@ -40,5 +41,6 @@ export interface TabsStates{
     //sidebar激活的menu-item
     defaultActive: string
     setDefaultActive: (active: string) => void
+    reset: () => void
 }
 

@@ -1,6 +1,15 @@
 <script setup lang="ts">
 
-import {ArrowDown, ArrowLeft, ArrowRight, Close, HomeFilled} from "@element-plus/icons-vue";
+import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  CircleClose,
+  Close,
+  HomeFilled,
+  Minus,
+  Refresh
+} from "@element-plus/icons-vue";
 import TabItem from "@/components/tabs/TabItem.vue";
 import {computed, nextTick, onMounted, onUnmounted, watch} from "vue";
 import {useTabsStore} from "@/store/tabs-store";
@@ -204,6 +213,9 @@ function closeAll() {
             :item="item"
             @close="onClose"
             @selected="onSelected"
+            @close-all="closeAll"
+            @close-other="closeOther"
+            @refresh="refresh"
             ref="tabItems">
 
         </TabItem>
@@ -214,15 +226,15 @@ function closeAll() {
     </div>
     <div class="arrow-down">
       <el-dropdown>
-    <span class="el-dropdown-link">
-      <el-button :icon="ArrowDown" circle text></el-button>
-    </span>
+        <span class="el-dropdown-link">
+          <el-button :icon="ArrowDown" circle text></el-button>
+        </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item @click="refresh">{{ $t('Refresh') }}</el-dropdown-item>
-            <el-dropdown-item divided @click="closeCurrent">{{ $t('Close current') }}</el-dropdown-item>
-            <el-dropdown-item @click="closeOther">{{ $t('Close other') }}</el-dropdown-item>
-            <el-dropdown-item @click="closeAll">{{ $t('Close all') }}</el-dropdown-item>
+            <el-dropdown-item @click="refresh" :icon="Refresh">{{ $t('Refresh') }}</el-dropdown-item>
+            <el-dropdown-item divided @click="closeCurrent" :icon="CircleClose">{{ $t('Close current') }}</el-dropdown-item>
+            <el-dropdown-item @click="closeOther" :icon="Minus">{{ $t('Close other') }}</el-dropdown-item>
+            <el-dropdown-item @click="closeAll" :icon="Close">{{ $t('Close all') }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -297,6 +309,9 @@ function closeAll() {
       }
 
       .active {
+        .el-dropdown-link{
+          color: var(--primary-color);
+        }
         color: var(--primary-color);
       }
     }

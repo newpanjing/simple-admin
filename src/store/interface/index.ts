@@ -32,6 +32,7 @@ export interface Tab{
     active: boolean
     url: string
     text: string
+    external: boolean
 }
 export interface TabsStates{
     tabs: Array<Tab>
@@ -44,3 +45,18 @@ export interface TabsStates{
     reset: () => void
 }
 
+
+
+export interface MenuItemStates {
+    id: number
+    text: string
+    children: Array<MenuItem>
+    icon: string
+    url: string
+    external: boolean
+}
+
+export interface MenuStates {
+    menus: Array<MenuItem>
+    setMenus: (menus: Array<MenuItem>) => void
+}

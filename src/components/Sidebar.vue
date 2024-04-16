@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 
 import SubMenu from "@/components/sidebar/SubMenu.vue"
-import {computed} from "vue";
+import {computed, onMounted} from "vue";
 import {useTabsStore} from "@/store/tabs-store";
 import {useStorage} from "@vueuse/core";
+import {useMenusStore} from "@/store/menu-store";
 
 const handleOpen = (key: string, keyPath: string[]) => {
   // console.log(key, keyPath)
@@ -11,75 +12,85 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   // console.log(key, keyPath)
 }
-const menus=useStorage("menus",[{
-  id: 1,
-  text: 'Dashboard',
-  children: [
-    {
-      id:2,
-      text: '主控台',
-      url: '/',
-    },
-    {
-      id: 201,
-      text: '监控大屏1',
-      url: '/scene/111',
-    }, {
-      id: 301,
-      text: '外部大屏',
-      url: '/scene/2222',
-      //是否为外链
-      external: true,
-    }]
-},
-  {
-    id: 4,
-    text: "系统管理", children: [{
-      id: 401,
-      text: '用户管理',
-      children: [{
-        id: 4011,
-        text: '用户列表',
-        url: '/list/aaa',
+
+
+
+const menusStore = useMenusStore()
+
+onMounted(async () => {
+  menusStore.setMenu([{
+    id: 1,
+    text: 'Dashboard',
+    children: [
+      {
+        id: 2,
+        text: '主控台',
+        url: '/',
+      },
+      {
+        id: 201,
+        text: '监控大屏1',
+        url: '/scene/111',
       }, {
-        id: 4012,
-        text: '用户详情',
-        url: '/list/detail',
+        id: 301,
+        text: '外部大屏',
+        url: '/scene/2222',
+        //是否为外链
+        external: true,
       }]
-    }, {
-      id: 402,
-      text: '角色管理',
-      url: '/role/list',
-    }, {
-      id: 403,
-      text: '权限管理',
-      url: '/permission/list',
-    }, {
-      id: 404,
-      text: '菜单管理',
-      url: '/menu/list',
-    }, {
-      id: 405,
-      text: '部门管理',
-      url: '/department/list',
-    }, {
-      id: 406,
-      text: '字典管理',
-      url: '/dictionary/list',
-    }, {
-      id: 407,
-      text: '系统日志',
-      url: '/log/list',
-    }]
   },
-  {id: 408, text: "社区首页", url: '/community/list', external: true}
-])
+    {
+      id: 4,
+      text: "系统管理", children: [{
+        id: 401,
+        text: '用户管理',
+        children: [{
+          id: 4011,
+          text: '用户列表',
+          url: '/list/aaa',
+        }, {
+          id: 4012,
+          text: '用户详情',
+          url: '/list/detail',
+        }]
+      }, {
+        id: 402,
+        text: '角色管理',
+        url: '/role/list',
+      }, {
+        id: 403,
+        text: '权限管理',
+        url: '/permission/list',
+      }, {
+        id: 404,
+        text: '菜单管理',
+        url: '/menu/list',
+      }, {
+        id: 405,
+        text: '部门管理',
+        url: '/department/list',
+      }, {
+        id: 406,
+        text: '字典管理',
+        url: '/dictionary/list',
+      }, {
+        id: 407,
+        text: '系统日志',
+        url: '/log/list',
+      }]
+    },
+    {id: 408, text: "社区首页", url: 'https://www.mldoo.com/', external: true}
+  ])
+})
+
 //折叠展开
 const collapse = useStorage("collapse", false)
 const router = useRouter()
+
 function push(url: string) {
   router.push(url)
 }
+
 const tabsStore = useTabsStore()
 
 
@@ -88,8 +99,8 @@ const tabsStore = useTabsStore()
 <template>
   <div :class="{sidebar:true,collapse:collapse}">
     <div class="banner" @click="push('/')">
-        <img src="../assets/logo.svg" alt="logo" class="logo">
-        <h3 class="title">Admin Pro</h3>
+      <img src="../assets/logo.svg" alt="logo" class="logo">
+      <h3 class="title">Admin Pro</h3>
     </div>
     <el-menu
         active-text-color="var(--sidebar-text-active-color)"
@@ -102,16 +113,17 @@ const tabsStore = useTabsStore()
         @open="handleOpen"
         @close="handleClose">
 
-      <SubMenu v-for="(menu,index) in menus" :key="index" :menu="menu"></SubMenu>
+      <SubMenu v-for="(menu,index) in menusStore.menus" :key="index" :menu="menu"></SubMenu>
     </el-menu>
   </div>
 </template>
 
 <style lang="scss">
-.router-url-active{
+.router-url-active {
   //不显示下划线
   text-decoration: none;
 }
+
 .sidebar:not(.el-menu--collapse) {
   display: flex;
   flex-direction: column;
@@ -157,6 +169,7 @@ const tabsStore = useTabsStore()
     gap: 10px;
     height: 65px;
     cursor: pointer;
+
     img {
       max-width: 30px;
       max-height: 30px;
@@ -174,6 +187,7 @@ const tabsStore = useTabsStore()
 
 .collapse:not(.el-menu--collapse) {
   width: auto;
+
   .banner {
     padding: 5px;
     justify-content: center;

@@ -148,7 +148,17 @@ function onSelected(item: any) {
   //遍历items，将active置为false
   items.value.forEach(e => e.active = e.id === item.id)
   //路由
-  router.push(item.url)
+  if(item.external){
+    let url = encodeURIComponent(item.url)
+    router.push({
+      name: "external",
+      query: {
+        url: url,
+      },
+    })
+  }else{
+    router.push(item.url)
+  }
   tabsStore.defaultActive = item.id.toString()
 }
 

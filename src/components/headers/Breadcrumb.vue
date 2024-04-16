@@ -1,20 +1,28 @@
 <script setup lang="ts">
 
 import {ArrowDown, ArrowRight} from "@element-plus/icons-vue";
-import {onMounted, ref, watch} from "vue";
+import {computed, onMounted, ref, watch} from "vue";
 import {useStorage} from "@vueuse/core";
 import {useTabsStore} from "@/store/tabs-store";
+import {useMenusStore} from "@/store/menu-store";
 
 const paths = ref([])
 
-const menus = useStorage("menus", [])
+
+const menusStore = useMenusStore()
+
 const tabsStore = useTabsStore()
 watch(() => tabsStore.defaultActive, (val) => {
   process(val)
 }, {
-  immediate: true,
+  immediate: false,
 })
-
+const menus=computed(()=>{
+  return menusStore.menus
+})
+watch(() => menusStore.menus, (val) => {
+  process(tabsStore.defaultActive)
+})
 async function process(activeId:string) {
   let find = deepFind(menus.value, activeId);
   paths.value=[]
@@ -43,7 +51,6 @@ function deepFind(items: any[], id: string) {
   return path
 }
 const open = (item: any) => {
-  console.log("open", item)
   tabsStore.pushTab(item)
 }
 </script>

@@ -32,6 +32,10 @@ const router = createRouter({
             path: '/about',
             name: 'about',
             component: () => import("@/views/AboutView.vue")
+        },{
+            path: '/external',
+            name: 'external',
+            component: () => import("@/views/ExternalView.vue")
         }, {
             path: '/list/:id',
             name: 'list',

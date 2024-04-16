@@ -22,19 +22,14 @@ const emit = defineEmits(['open'])
 const tabs = useTabsStore()
 const open = () => {
   let menu = props.menu as MenuType
-  //判断是内部还是外部
-  if(menu.external){
-    window.open(menu.url)
-  }else{
-    // router.push(menu.url)
-    tabs.pushTab({
-      id: menu.id,
-      text: menu.text,
-      closeable: true,
-      url: menu.url,
-      active: true
-    })
-  }
+  tabs.pushTab({
+    id: menu.id,
+    text: menu.text,
+    closeable: true,
+    external: menu.external,
+    url: menu.url,
+    active: true
+  })
 }
 
 const hasChild = computed(() => {
@@ -53,9 +48,6 @@ const collapse = useStorage("collapse", false)
         <document/>
       </el-icon>
       <span>{{ menu.text }}</span>
-      <el-icon v-if="menu.external&&!collapse">
-        <Link/>
-      </el-icon>
       <SubMenu :menu="menu" v-if="hasItemChild(menu)" @open="open"/>
     </el-menu-item>
   </div>

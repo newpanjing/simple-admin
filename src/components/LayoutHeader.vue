@@ -9,6 +9,7 @@ import SettingButton from "@/components/headers/SettingButton.vue";
 import {useThemeStore} from "@/store/theme-store";
 import {computed} from "vue";
 import Breadcrumb from "@/components/headers/Breadcrumb.vue";
+import SearchButton from "@/components/headers/SearchButton.vue";
 
 const collapse = useStorage("collapse", false)
 const toggleCollapse = () => {
@@ -41,6 +42,7 @@ const topDark=computed(()=>{
     </div>
     <div class="space"></div>
     <div class="right">
+      <SearchButton/>
       <SwitchDarkMode/>
       <SwitchLanguage/>
       <UserInfo/>

@@ -6,6 +6,7 @@
 
 ## 演示地址
 
+[https://simple-admin-xi.vercel.app/](https://simple-admin-xi.vercel.app/)
 
 ## 预览
 
